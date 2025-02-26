@@ -1,0 +1,37 @@
+{
+    "@@locale": "en",
+    "feedback": "Feedback",
+    "@feedback": {},
+
+    "appName": "Botambe",
+
+    "chooseHabits": "Choose Habits",
+    "fetchingData": "Fetching data ...",
+    "getStarted": "Get Started",
+    "setDailyHabits": "Set your daily habits, balance 20 hrs per day",
+    "habitChooserFailure": "We are unable to fetch data for this screen at the moment",
+    "habitChooserSuccess": "Your habits have been set successfully",
+
+    "password": "Password",
+    "email": "Email Address",
+    "signin": "Sign In",
+    "signup": "Sign Up",
+
+    "authSuccess": "Authentication was successful",
+    "signinSuccess": "Signing in was successful",
+    "signupSuccess": "Signing up was successful",
+    "passwordResetEmail": "A password reset email has been sent to your email",
+    
+    "errorOccurred": "An error occured: {error}",
+    "@errorOccurred": {
+        "description": "A message with a single parameter",
+        "placeholders": {
+            "error": {
+                "type": "String",
+                "example": "Bob"
+            }
+        }
+    },
+
+    "misc": "misc"
+}
