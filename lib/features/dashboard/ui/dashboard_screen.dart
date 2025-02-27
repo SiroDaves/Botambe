@@ -162,7 +162,7 @@ class DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             loading: () =>
-                Scaffold(body: LoadingProgress(title: l10n.savingHabits)),
+                Scaffold(body: LoadingProgress(title: l10n.fetchingData)),
             fetchedLocal: (habits, entries) => bodyWidget,
             fetchedOnline: (habits, entries) => bodyWidget,
           );

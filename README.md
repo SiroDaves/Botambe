@@ -23,7 +23,7 @@ Follow this guide to set up and run the Botambe:
 2. **Clone the Repository:** Clone the Botambe repository from GitHub using Git:
 
     ```bash
-    git clone https://github.com/SiroDaves/SDWeather.git
+    git clone https://github.com/SiroDaves/Botambe.git
     ```
 
 3. **Install Packages:** Navigate to the project directory and run:
@@ -38,9 +38,9 @@ Follow this guide to set up and run the Botambe:
     dart run build_runner build --delete-conflicting-outputs
     ```
 
-5. **Setup Open Weather Api Key:** Copy paste the file ```keys.example``` to the project directory.
+5. **Setup Supabase Keys:** Copy paste the file ```keys.example``` to the project directory.
     - Rename the copied file as ```keys-prod.json```. 
-    - Replace the empty value of ```openWeatherApiKey``` with your open weather api key
+    - Replace the empty value of ```supabaseUrl``` and ```supabaseAnonKey``` with your supabase keys
 
 6. **Run the App:** Execute the following command to run the app:
 
