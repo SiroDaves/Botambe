@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../common/widget/text_scale_factor.dart';
 import '../../features/auth/signin/ui/signin_screen.dart';
 import '../../features/auth/signup/ui/signup_screen.dart';
-import '../../features/dashboard/dashboard_screen.dart';
+import '../../features/dashboard/ui/dashboard_screen.dart';
 import '../../features/habits_chooser/ui/habits_chooser_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/splash/splash_screen.dart';

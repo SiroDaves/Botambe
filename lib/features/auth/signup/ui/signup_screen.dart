@@ -15,6 +15,7 @@ import '../../../../common/widget/progress/general_progress.dart';
 import '../../../../core/di/injectable.dart';
 import '../../../../core/theme/theme_colors.dart';
 import '../../common/bloc/user_auth_bloc.dart';
+import '../common/signup_utils.dart';
 
 part 'widgets/signup_form.dart';
 
@@ -29,11 +30,9 @@ class SignupScreenState extends State<SignupScreen> {
   late AppLocalizations l10n;
   late PrefsRepository prefRepo;
   late AuthRepository authRepo;
-  bool isOnboarded = false;
+  bool isOnboarded = false, isPassResetting = false;
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  TextEditingController? nameController, emailController, passwordController;
 
   @override
   void initState() {
@@ -41,14 +40,23 @@ class SignupScreenState extends State<SignupScreen> {
     prefRepo = getIt<PrefsRepository>();
     authRepo = getIt<AuthRepository>();
     isOnboarded = prefRepo.getPrefBool(PrefConstants.isOnboardedKey);
+    String email = prefRepo.getPrefString(PrefConstants.userEmailKey);
+    String name = prefRepo.getPrefString(PrefConstants.userNameKey);
+    nameController = TextEditingController(text: name);
+    emailController = TextEditingController(text: email);
+    passwordController = TextEditingController();
   }
 
   void nextStep() {
     Navigator.pushNamedAndRemoveUntil(
       context,
-      isOnboarded ? RouteNames.dashboard : RouteNames.onboarding,
+      RouteNames.signin,
       (route) => false,
     );
+  }
+
+  void setPassResetting(bool value) {
+    setState(() => isPassResetting = value);
   }
 
   @override
@@ -73,10 +81,9 @@ class SignupScreenState extends State<SignupScreen> {
           return Scaffold(
             appBar: AppBar(title: Text(l10n.signup)),
             body: state.maybeWhen(
-              failure: (feedback) => EmptyState(
-                title: l10n.unexpectedError,
+              loading: () => LoadingProgress(
+                title: isPassResetting ? l10n.passResetting : l10n.signingUp,
               ),
-              loading: () => LoadingProgress(title: l10n.processingData),
               orElse: () => SignupForm(parent: this),
             ),
           );

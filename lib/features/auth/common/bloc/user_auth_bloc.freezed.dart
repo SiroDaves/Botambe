@@ -133,11 +133,11 @@ class __$$UserAuthSigninNowImplCopyWithImpl<$Res>
     Object? password = null,
   }) {
     return _then(_$UserAuthSigninNowImpl(
-      null == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      null == password
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -148,7 +148,7 @@ class __$$UserAuthSigninNowImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserAuthSigninNowImpl implements UserAuthSigninNow {
-  const _$UserAuthSigninNowImpl(this.email, this.password);
+  const _$UserAuthSigninNowImpl({required this.email, required this.password});
 
   @override
   final String email;
@@ -253,8 +253,9 @@ class _$UserAuthSigninNowImpl implements UserAuthSigninNow {
 }
 
 abstract class UserAuthSigninNow implements UserAuthEvent {
-  const factory UserAuthSigninNow(final String email, final String password) =
-      _$UserAuthSigninNowImpl;
+  const factory UserAuthSigninNow(
+      {required final String email,
+      required final String password}) = _$UserAuthSigninNowImpl;
 
   @override
   String get email;
@@ -297,15 +298,15 @@ class __$$UserAuthSignupNowImplCopyWithImpl<$Res>
     Object? password = null,
   }) {
     return _then(_$UserAuthSignupNowImpl(
-      null == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      null == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      null == password
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -316,7 +317,8 @@ class __$$UserAuthSignupNowImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserAuthSignupNowImpl implements UserAuthSignupNow {
-  const _$UserAuthSignupNowImpl(this.name, this.email, this.password);
+  const _$UserAuthSignupNowImpl(
+      {required this.name, required this.email, required this.password});
 
   @override
   final String name;
@@ -425,8 +427,9 @@ class _$UserAuthSignupNowImpl implements UserAuthSignupNow {
 
 abstract class UserAuthSignupNow implements UserAuthEvent {
   const factory UserAuthSignupNow(
-          final String name, final String email, final String password) =
-      _$UserAuthSignupNowImpl;
+      {required final String name,
+      required final String email,
+      required final String password}) = _$UserAuthSignupNowImpl;
 
   String get name;
   @override
@@ -469,7 +472,7 @@ class __$$UserAuthPasswordResetImplCopyWithImpl<$Res>
     Object? email = null,
   }) {
     return _then(_$UserAuthPasswordResetImpl(
-      null == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
@@ -480,7 +483,7 @@ class __$$UserAuthPasswordResetImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserAuthPasswordResetImpl implements UserAuthPasswordReset {
-  const _$UserAuthPasswordResetImpl(this.email);
+  const _$UserAuthPasswordResetImpl({required this.email});
 
   @override
   final String email;
@@ -581,7 +584,7 @@ class _$UserAuthPasswordResetImpl implements UserAuthPasswordReset {
 }
 
 abstract class UserAuthPasswordReset implements UserAuthEvent {
-  const factory UserAuthPasswordReset(final String email) =
+  const factory UserAuthPasswordReset({required final String email}) =
       _$UserAuthPasswordResetImpl;
 
   @override

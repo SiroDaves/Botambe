@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   animated_text_kit: ^4.2.3 # Library for animated text effects
+  cached_network_image: ^3.4.1
   card_swiper: ^3.0.1 # Swiper for card-based UI navigation
   cupertino_icons: ^1.0.8 # Cupertino-style icons for iOS-themed apps
   floor: ^1.5.0 # SQLite persistence layer for Flutter

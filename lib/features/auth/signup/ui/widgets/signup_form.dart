@@ -39,6 +39,7 @@ class SignupForm extends StatelessWidget {
             key: const Key('signup_password_input'),
             label: l10n.password,
             hint: l10n.password,
+            isPassword: true,
             controller: parent.passwordController,
           ),
           const SizedBox(height: 20),
@@ -46,11 +47,17 @@ class SignupForm extends StatelessWidget {
             AppButton(
               key: const Key('signup_proceed_button'),
               onPressed: () {
-                bloc.add(UserAuthSignupNow(
-                  parent.nameController.text.trim(),
-                  parent.emailController.text.trim(),
-                  parent.passwordController.text.trim(),
-                ));
+                var validation = validateSignup(parent);
+                if (validation.validated) {
+                  parent.setPassResetting(false);
+                  bloc.add(UserAuthSignupNow(
+                    name: parent.nameController!.text.trim(),
+                    email: parent.emailController!.text.trim(),
+                    password: parent.passwordController!.text.trim(),
+                  ));
+                } else {
+                  CustomSnackbar.show(context, validation.error);
+                }
               },
               label: l10n.signup,
               bgColor: ThemeColors.primary,
@@ -64,9 +71,15 @@ class SignupForm extends StatelessWidget {
           const SizedBox(height: 10),
           TextButton(
             onPressed: () {
-              bloc.add(UserAuthPasswordReset(
-                parent.emailController.text.trim(),
-              ));
+              var validation = validatePassreset(parent);
+              if (validation.validated) {
+                parent.setPassResetting(true);
+                bloc.add(UserAuthPasswordReset(
+                  email: parent.emailController!.text.trim(),
+                ));
+              } else {
+                CustomSnackbar.show(context, validation.error);
+              }
             },
             child: Text(l10n.forgotPassword),
           ),

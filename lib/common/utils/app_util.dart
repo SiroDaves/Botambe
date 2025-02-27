@@ -25,3 +25,9 @@ Future<bool> isConnected() async {
     return false;
   }
 }
+
+String extractMessage(String error) {
+  final regex = RegExp(r'AuthException\(message:\s*(.*?),\s*statusCode:');
+  final match = regex.firstMatch(error);
+  return match?.group(1) ?? 'Unknown error';
+}

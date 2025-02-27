@@ -15,6 +15,7 @@ import '../../../../common/widget/progress/general_progress.dart';
 import '../../../../core/di/injectable.dart';
 import '../../../../core/theme/theme_colors.dart';
 import '../../common/bloc/user_auth_bloc.dart';
+import '../common/signin_utils.dart';
 
 part 'widgets/signin_form.dart';
 
@@ -31,8 +32,7 @@ class SigninScreenState extends State<SigninScreen> {
   late AuthRepository authRepo;
   bool isOnboarded = false;
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  TextEditingController? emailController, passwordController;
 
   @override
   void initState() {
@@ -40,6 +40,9 @@ class SigninScreenState extends State<SigninScreen> {
     prefRepo = getIt<PrefsRepository>();
     authRepo = getIt<AuthRepository>();
     isOnboarded = prefRepo.getPrefBool(PrefConstants.isOnboardedKey);
+    String email = prefRepo.getPrefString(PrefConstants.userEmailKey);
+    emailController = TextEditingController(text: email);
+    passwordController = TextEditingController();
   }
 
   void nextStep() {
@@ -73,10 +76,7 @@ class SigninScreenState extends State<SigninScreen> {
           return Scaffold(
             appBar: AppBar(title: Text(l10n.signin)),
             body: state.maybeWhen(
-              failure: (feedback) => EmptyState(
-                title: l10n.unexpectedError,
-              ),
-              loading: () => LoadingProgress(title: l10n.processingData),
+              loading: () => LoadingProgress(title: l10n.signingIn),
               orElse: () => SigninForm(parent: this),
             ),
           );

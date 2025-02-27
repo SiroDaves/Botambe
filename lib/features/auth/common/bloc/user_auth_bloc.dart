@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../common/repository/auth_repository.dart';
 import '../../../../common/repository/prefs_repository.dart';
+import '../../../../common/utils/app_util.dart';
 import '../../../../common/utils/constants/pref_constants.dart';
 import '../../../../core/di/injectable.dart';
 import '../domain/user_auth_repository.dart';
@@ -32,16 +33,16 @@ class UserAuthBloc extends Bloc<UserAuthEvent, UserAuthState> {
     try {
       _prefsRepo.setPrefString(PrefConstants.userEmailKey, event.email);
 
-      final response = await _userAuthrepo.signinUser(
-        event.email,
-        event.password,
+      final resp = await _userAuthrepo.signinUser(
+        email: event.email,
+        password: event.password,
       );
 
-      if (response != null && response.session != null) {
-        _authrepo.signin(response.session);
+      if (resp!.response != null) {
+        _authrepo.signin();
         emit(UserAuthSigninSuccessState());
       } else {
-        emit(UserAuthFailureState('Invalid credentials. Please try again.'));
+        emit(UserAuthFailureState(extractMessage(resp.feedback)));
       }
     } catch (e) {
       emit(UserAuthFailureState(e.toString()));
@@ -57,17 +58,17 @@ class UserAuthBloc extends Bloc<UserAuthEvent, UserAuthState> {
     try {
       _prefsRepo.setPrefString(PrefConstants.userEmailKey, event.email);
 
-      final response = await _userAuthrepo.signupUser(
-        event.email,
-        event.password,
-        event.name,
+      final resp = await _userAuthrepo.signupUser(
+        name: event.name,
+        email: event.email,
+        password: event.password,
       );
 
-      if (response != null && response.session != null) {
-        _authrepo.signin(response.session);
+      if (resp!.response != null) {
+        _authrepo.signin();
         emit(UserAuthSignupSuccessState());
       } else {
-        emit(UserAuthFailureState('Invalid credentials. Please try again.'));
+        emit(UserAuthFailureState(extractMessage(resp.feedback)));
       }
     } catch (e) {
       emit(UserAuthFailureState(e.toString()));
@@ -80,7 +81,7 @@ class UserAuthBloc extends Bloc<UserAuthEvent, UserAuthState> {
   ) async {
     emit(const UserAuthLoadingState());
     _prefsRepo.setPrefString(PrefConstants.userEmailKey, event.email);
-    await _userAuthrepo.passwordReset(event.email);
+    await _userAuthrepo.passwordReset(email: event.email);
     emit(UserAuthPasswordResetState());
   }
 }

@@ -1,11 +1,8 @@
 import 'dart:async';
 
 import 'package:injectable/injectable.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../core/di/injectable.dart';
 import '../utils/app_util.dart';
-import 'prefs_repository.dart';
 
 enum AuthStatus { authenticated, unauthenticated }
 
@@ -19,11 +16,7 @@ class AuthRepository {
     yield* _controller.stream;
   }
 
-  Future<void> signin(Session? session) async {
-    var prefRepo = getIt<PrefsRepository>();
-    prefRepo.session = session;
-    prefRepo.user = session!.user;
-    
+  Future<void> signin() async {
     logger("User auth status: Authenticated");
     await Future.delayed(
       const Duration(seconds: 2),

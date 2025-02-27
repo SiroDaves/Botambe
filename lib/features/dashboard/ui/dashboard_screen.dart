@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../common/repository/prefs_repository.dart';
-import '../../core/di/injectable.dart';
+import '../../../common/repository/prefs_repository.dart';
+import '../../../common/utils/app_util.dart';
+import '../../../common/utils/constants/app_assets.dart';
+import '../../../common/widget/progress/custom_snackbar.dart';
+import '../../../core/di/injectable.dart';
+import '../../../core/navigator/route_names.dart';
+import '../../profile/widgets/numbers_widget.dart';
 import 'widgets/custom_bottom_nav.dart';
 import 'widgets/home_widgets.dart';
+import '../../profile/widgets/avatar_widget.dart';
 
 part 'habits_screen.dart';
 part 'home_screen.dart';
-part 'profile_screen.dart';
+part '../../profile/profile_screen.dart';
 part 'statistics_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -23,12 +29,17 @@ class DashboardScreenState extends State<DashboardScreen> {
   late PrefsRepository prefRepo;
   late User user;
   int selectedIndex = 0;
+  final SupabaseClient _supabase = Supabase.instance.client;
 
   @override
   void initState() {
     super.initState();
     prefRepo = getIt<PrefsRepository>();
-    user = prefRepo.user!;
+    try {
+      user = _supabase.auth.currentSession!.user;
+    } catch (e) {
+      logger('User not found: $e');
+    }
   }
 
   void onItemTapped(int index) {

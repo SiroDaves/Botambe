@@ -132,18 +132,18 @@ class LoadingProgress extends StatelessWidget {
     );
     return Center(
       child: SizedBox(
-        height: size.height / 1.5,
+        height: size.height / 2.5,
         child: Column(
           children: [
             SizedBox(
-              height: size.height / 3,
+              height: size.height / 5,
               child: loadingIndicator1,
             ),
             Text(
               title,
               textAlign: TextAlign.center,
               style:
-                  TextStyles.titleStyle1.size(size.height / 22).textHeight(1.5),
+                  TextStyles.titleStyle1.size(16),
             ).padding(all: 30),
           ],
         ),

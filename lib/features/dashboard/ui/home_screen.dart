@@ -23,7 +23,9 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               Text(
-                parent.user.email ?? 'Friend',
+                parent.user.userMetadata?['display_name'] ??
+                    parent.user.email ??
+                    'Friend',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
               ),
             ].toColumn(

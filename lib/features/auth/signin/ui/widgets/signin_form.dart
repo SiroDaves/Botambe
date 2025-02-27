@@ -32,6 +32,7 @@ class SigninForm extends StatelessWidget {
             key: const Key('signin_password_input'),
             label: l10n.password,
             hint: l10n.password,
+            isPassword: true,
             controller: parent.passwordController,
           ),
           const SizedBox(height: 20),
@@ -39,10 +40,15 @@ class SigninForm extends StatelessWidget {
             AppButton(
               key: const Key('sigin_proceed_button'),
               onPressed: () {
-                bloc.add(UserAuthSigninNow(
-                  parent.emailController.text.trim(),
-                  parent.passwordController.text.trim(),
-                ));
+                var validation = validateSignin(parent);
+                if (validation.validated) {
+                  bloc.add(UserAuthSigninNow(
+                    email: parent.emailController!.text.trim(),
+                    password: parent.passwordController!.text.trim(),
+                  ));
+                } else {
+                  CustomSnackbar.show(context, validation.error);
+                }
               },
               label: l10n.signin,
               bgColor: ThemeColors.primary,

@@ -4,7 +4,6 @@ import 'package:styled_widget/styled_widget.dart';
 
 import '../../../core/theme/theme_colors.dart';
 import '../../../core/theme/theme_styles.dart';
-import '../../utils/app_util.dart';
 
 class FormInput extends StatefulWidget {
   final String? label;
@@ -24,6 +23,7 @@ class FormInput extends StatefulWidget {
   final Function()? onClear;
   final Widget? prefix;
   final Widget? suffix;
+  final bool isPassword;
   final bool showBoarder;
   final double bdRadius;
   final int maxInput;
@@ -56,6 +56,7 @@ class FormInput extends StatefulWidget {
     this.onTap,
     this.prefix,
     this.suffix,
+    this.isPassword = false,
     this.showBoarder = true,
     this.bdRadius = 10,
     this.maxInput = 20000,
@@ -75,15 +76,19 @@ class FormInput extends StatefulWidget {
 }
 
 class FormInputState extends State<FormInput> {
-  void clearText() {
-    try {
-      if (widget.controller != null) {
-        widget.controller!.clear();
-      } else {
-        widget.onClear!();
-      }
-    } catch (e) {
-      logger('Unable to clear text: $e');
+  bool _isObscured = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isObscured = !_isObscured;
+    });
+  }
+
+  void _clearText() {
+    if (widget.controller != null) {
+      widget.controller!.clear();
+    } else {
+      widget.onClear?.call();
     }
   }
 
@@ -100,6 +105,7 @@ class FormInputState extends State<FormInput> {
     var inputWidget = TextFormField(
       controller: widget.controller,
       keyboardType: widget.type,
+      obscureText: widget.isPassword ? _isObscured : false,
       autovalidateMode: widget.validationMode,
       validator: widget.validator,
       enabled: widget.isEnabled,
@@ -117,14 +123,20 @@ class FormInputState extends State<FormInput> {
         hintText: widget.hint,
         hintStyle: const TextStyle(fontSize: 14),
         suffix: widget.suffix,
-        suffixIcon: widget.showClearButton
-            ? (widget.isReadOnly!
-                ? null
-                : InkWell(
-                    onTap: clearText,
-                    child: Icon(Icons.clear, color: foreColor),
-                  ))
-            : null,
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                onPressed: _togglePasswordVisibility,
+                icon: Icon(
+                  _isObscured ? Icons.visibility_off : Icons.visibility,
+                  color: foreColor,
+                ),
+              )
+            : (widget.showClearButton && !widget.isReadOnly!
+                ? IconButton(
+                    onPressed: _clearText,
+                    icon: Icon(Icons.clear, color: foreColor),
+                  )
+                : null),
         labelStyle: TextStyle(fontSize: 16, color: foreColor),
         isDense: false,
         contentPadding: widget.inputPadding ??
@@ -138,8 +150,8 @@ class FormInputState extends State<FormInput> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.bdRadius),
-          borderSide: BorderSide(
-              color: widget.showBoarder ? foreColor : Colors.white),
+          borderSide:
+              BorderSide(color: widget.showBoarder ? foreColor : Colors.white),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

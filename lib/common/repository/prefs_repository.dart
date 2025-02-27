@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../utils/constants/pref_constants.dart';
 
@@ -11,9 +10,6 @@ abstract class PrefsRepository {
   factory PrefsRepository(SharedPreferences prefsRepository) = PrefsRepositoryImp;
 
   ThemeMode getThemeMode();
-
-  Session? session;
-  User? user;
 
   Future<void> updateThemeMode(ThemeMode themeMode);
 
@@ -114,10 +110,4 @@ class PrefsRepositoryImp implements PrefsRepository {
     }
     sharedPrefs.setString(settingsKey, settingsValue);
   }
-
-  @override
-  Session? session;
-
-  @override
-  User? user;
 }

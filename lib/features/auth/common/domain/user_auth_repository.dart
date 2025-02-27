@@ -1,59 +1,66 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../common/data/models/basic_models.dart';
 import '../../../../common/utils/app_util.dart';
 
 class UserAuthRepository {
   final SupabaseClient _supabase = Supabase.instance.client;
 
-  Future<AuthResponse?> signinUser(String email, String password) async {
+  Future<RespModel?> signinUser({
+    required String email,
+    required String password,
+  }) async {
     logger('Now signing in user');
+    late AuthResponse resp;
     try {
-      final resp = await _supabase.auth.signInWithPassword(
+      resp = await _supabase.auth.signInWithPassword(
         email: email,
         password: password,
       );
 
       if (resp.session != null) {
         logger('User signed in successfully: ${resp.user?.email}');
-        return resp;
+        return RespModel(response: resp);
       } else {
         logger('Authentication failed: No active session');
-        return null;
+        return RespModel(feedback: "Authentication failed");
       }
     } catch (e) {
       logger('Request was unsuccessful: $e');
-      return null;
+      return RespModel(feedback: e.toString());
     }
   }
 
-  Future<AuthResponse?> signupUser(
-      String name, String email, String password) async {
+  Future<RespModel?> signupUser({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
     logger('Now signing up user');
+    late AuthResponse resp;
     try {
-      final resp = await _supabase.auth.signUp(
+      resp = await _supabase.auth.signUp(
         email: email,
         password: password,
         data: {'display_name': name},
       );
 
-      if (resp.session != null) {
+      if (resp.user != null) {
         logger('User signed up successfully: ${resp.user?.email}');
-        return resp;
+        return RespModel(response: resp);
       } else {
         logger('Authentication failed: No active session');
-        return null;
+        return RespModel(feedback: "Authentication failed");
       }
     } catch (e) {
       logger('Request was unsuccessful: $e');
-      return null;
+      return RespModel(feedback: e.toString());
     }
   }
 
-  Future<void> passwordReset(String email) async {
+  Future<void> passwordReset({required String email}) async {
     logger('Now sending password recovery email');
-    await _supabase.auth.resetPasswordForEmail(
-      email,
-    );
+    await _supabase.auth.resetPasswordForEmail(email);
     logger('Request was successful');
   }
 }
