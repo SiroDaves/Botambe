@@ -100,7 +100,7 @@ class AppViewState extends State<AppView> {
                 switch (state.status) {
                   case AuthStatus.unauthenticated:
                     navigator.pushNamedAndRemoveUntil<void>(
-                      RouteNames.userAuth,
+                      RouteNames.signin,
                       (route) => false,
                     );
                   case AuthStatus.authenticated:

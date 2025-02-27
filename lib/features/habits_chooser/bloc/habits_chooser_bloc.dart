@@ -28,7 +28,7 @@ class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
     Emitter<HabitsChooserState> emit,
   ) async {
     List<Habit> habits = [];
-    emit(const HabitsChooserProgressState());
+    emit(const HabitsChooserLoadingState());
 
     habits = await _habitsRepo.fetchHabits();
     
@@ -43,7 +43,7 @@ class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
     SaveData event,
     Emitter<HabitsChooserState> emit,
   ) async {
-    emit(const HabitsChooserProgressState());
+    emit(const HabitsChooserLoadingState());
 
     await _dbRepo.removeAllHabits();
     for (final habit in event.habits) {

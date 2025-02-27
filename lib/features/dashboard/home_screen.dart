@@ -1,7 +1,8 @@
 part of 'dashboard_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final DashboardScreenState parent;
+  const HomeScreen({super.key, required this.parent});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,18 @@ class HomeScreen extends StatelessWidget {
               child: Icon(Icons.person, color: Colors.white),
             ),
             const SizedBox(width: 10),
-            Text(
-              "Good morning 👋",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            [
+              Text(
+                "Good morning 👋",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                parent.user.email ?? 'Friend',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              ),
+            ].toColumn(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
             ),
           ],
         ),

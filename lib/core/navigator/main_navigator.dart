@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../common/widget/text_scale_factor.dart';
-import '../../features/auth/auth_screen.dart';
+import '../../features/auth/signin/ui/signin_screen.dart';
+import '../../features/auth/signup/ui/signup_screen.dart';
 import '../../features/dashboard/dashboard_screen.dart';
 import '../../features/habits_chooser/ui/habits_chooser_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
@@ -61,7 +62,8 @@ class MainNavigatorState extends State<MainNavigator> with MainNavigationMixin {
       RouteNames.splash: (context) => const SplashScreen(),
       RouteNames.onboarding: (context) => const OnboardingScreen(),
       RouteNames.habitsChooser: (context) => const HabitsChooserScreen(),
-      RouteNames.userAuth: (context) => const AuthScreen(),
+      RouteNames.signin: (context) => const SigninScreen(),
+      RouteNames.signup: (context) => const SignupScreen(),
       RouteNames.dashboard: (context) => const DashboardScreen(),
     };
 

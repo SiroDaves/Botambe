@@ -334,7 +334,7 @@ mixin _$HabitsChooserState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
@@ -344,7 +344,7 @@ mixin _$HabitsChooserState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
@@ -354,7 +354,7 @@ mixin _$HabitsChooserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
@@ -365,7 +365,7 @@ mixin _$HabitsChooserState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
@@ -375,7 +375,7 @@ mixin _$HabitsChooserState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
@@ -385,7 +385,7 @@ mixin _$HabitsChooserState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,
@@ -458,7 +458,7 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
@@ -471,7 +471,7 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
@@ -484,7 +484,7 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
@@ -501,7 +501,7 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
@@ -514,7 +514,7 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
@@ -527,7 +527,7 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,
@@ -591,7 +591,7 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
@@ -604,7 +604,7 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
@@ -617,7 +617,7 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
@@ -634,7 +634,7 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
@@ -647,7 +647,7 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
@@ -660,7 +660,7 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,
@@ -678,21 +678,21 @@ abstract class HabitsChooserLoadedState implements HabitsChooserState {
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserProgressStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserProgressStateImplCopyWith(
-          _$HabitsChooserProgressStateImpl value,
-          $Res Function(_$HabitsChooserProgressStateImpl) then) =
-      __$$HabitsChooserProgressStateImplCopyWithImpl<$Res>;
+abstract class _$$HabitsChooserLoadingStateImplCopyWith<$Res> {
+  factory _$$HabitsChooserLoadingStateImplCopyWith(
+          _$HabitsChooserLoadingStateImpl value,
+          $Res Function(_$HabitsChooserLoadingStateImpl) then) =
+      __$$HabitsChooserLoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HabitsChooserProgressStateImplCopyWithImpl<$Res>
+class __$$HabitsChooserLoadingStateImplCopyWithImpl<$Res>
     extends _$HabitsChooserStateCopyWithImpl<$Res,
-        _$HabitsChooserProgressStateImpl>
-    implements _$$HabitsChooserProgressStateImplCopyWith<$Res> {
-  __$$HabitsChooserProgressStateImplCopyWithImpl(
-      _$HabitsChooserProgressStateImpl _value,
-      $Res Function(_$HabitsChooserProgressStateImpl) _then)
+        _$HabitsChooserLoadingStateImpl>
+    implements _$$HabitsChooserLoadingStateImplCopyWith<$Res> {
+  __$$HabitsChooserLoadingStateImplCopyWithImpl(
+      _$HabitsChooserLoadingStateImpl _value,
+      $Res Function(_$HabitsChooserLoadingStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of HabitsChooserState
@@ -701,19 +701,19 @@ class __$$HabitsChooserProgressStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
-  const _$HabitsChooserProgressStateImpl();
+class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
+  const _$HabitsChooserLoadingStateImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserState.progress()';
+    return 'HabitsChooserState.loading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitsChooserProgressStateImpl);
+            other is _$HabitsChooserLoadingStateImpl);
   }
 
   @override
@@ -724,12 +724,12 @@ class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
   }) {
-    return progress();
+    return loading();
   }
 
   @override
@@ -737,12 +737,12 @@ class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
   }) {
-    return progress?.call();
+    return loading?.call();
   }
 
   @override
@@ -750,14 +750,14 @@ class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
-    if (progress != null) {
-      return progress();
+    if (loading != null) {
+      return loading();
     }
     return orElse();
   }
@@ -767,12 +767,12 @@ class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
   }) {
-    return progress(this);
+    return loading(this);
   }
 
   @override
@@ -780,12 +780,12 @@ class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
   }) {
-    return progress?.call(this);
+    return loading?.call(this);
   }
 
   @override
@@ -793,21 +793,21 @@ class _$HabitsChooserProgressStateImpl implements HabitsChooserProgressState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,
     required TResult orElse(),
   }) {
-    if (progress != null) {
-      return progress(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
 }
 
-abstract class HabitsChooserProgressState implements HabitsChooserState {
-  const factory HabitsChooserProgressState() = _$HabitsChooserProgressStateImpl;
+abstract class HabitsChooserLoadingState implements HabitsChooserState {
+  const factory HabitsChooserLoadingState() = _$HabitsChooserLoadingStateImpl;
 }
 
 /// @nodoc
@@ -857,7 +857,7 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
@@ -870,7 +870,7 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
@@ -883,7 +883,7 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
@@ -900,7 +900,7 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
@@ -913,7 +913,7 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
@@ -926,7 +926,7 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,
@@ -1024,7 +1024,7 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
@@ -1037,7 +1037,7 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
@@ -1050,7 +1050,7 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
@@ -1067,7 +1067,7 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
@@ -1080,7 +1080,7 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
@@ -1093,7 +1093,7 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,
@@ -1194,7 +1194,7 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
-    required TResult Function() progress,
+    required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(List<Habit> habits) fetched,
     required TResult Function(String feedback) failure,
@@ -1207,7 +1207,7 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loaded,
-    TResult? Function()? progress,
+    TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(List<Habit> habits)? fetched,
     TResult? Function(String feedback)? failure,
@@ -1220,7 +1220,7 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loaded,
-    TResult Function()? progress,
+    TResult Function()? loading,
     TResult Function()? success,
     TResult Function(List<Habit> habits)? fetched,
     TResult Function(String feedback)? failure,
@@ -1237,7 +1237,7 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   TResult map<TResult extends Object?>({
     required TResult Function(_HabitsChooserState value) initial,
     required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserProgressState value) progress,
+    required TResult Function(HabitsChooserLoadingState value) loading,
     required TResult Function(HabitsChooserSuccessState value) success,
     required TResult Function(HabitsChooserFetchedState value) fetched,
     required TResult Function(HabitsChooserFailureState value) failure,
@@ -1250,7 +1250,7 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_HabitsChooserState value)? initial,
     TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserProgressState value)? progress,
+    TResult? Function(HabitsChooserLoadingState value)? loading,
     TResult? Function(HabitsChooserSuccessState value)? success,
     TResult? Function(HabitsChooserFetchedState value)? fetched,
     TResult? Function(HabitsChooserFailureState value)? failure,
@@ -1263,7 +1263,7 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_HabitsChooserState value)? initial,
     TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserProgressState value)? progress,
+    TResult Function(HabitsChooserLoadingState value)? loading,
     TResult Function(HabitsChooserSuccessState value)? success,
     TResult Function(HabitsChooserFetchedState value)? fetched,
     TResult Function(HabitsChooserFailureState value)? failure,

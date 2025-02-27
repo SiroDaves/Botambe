@@ -7,7 +7,7 @@ class HabitsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Habits')),
-      body: Center(child: Text('List of all habits and progress indicators.')),
+      body: Center(child: Text('List of all habits and loading indicators.')),
     );
   }
 }

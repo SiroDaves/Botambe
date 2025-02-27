@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:styled_widget/styled_widget.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../common/repository/prefs_repository.dart';
+import '../../core/di/injectable.dart';
 import 'widgets/custom_bottom_nav.dart';
 import 'widgets/home_widgets.dart';
 
@@ -16,7 +20,16 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class DashboardScreenState extends State<DashboardScreen> {
+  late PrefsRepository prefRepo;
+  late User user;
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    prefRepo = getIt<PrefsRepository>();
+    user = prefRepo.user!;
+  }
 
   void onItemTapped(int index) {
     setState(() => selectedIndex = index);
@@ -25,10 +38,10 @@ class DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-      HomeScreen(),
+      HomeScreen(parent: this),
       HabitsScreen(),
       StatisticsScreen(),
-      ProfileScreen(),
+      ProfileScreen(parent: this),
       const SizedBox(),
     ];
 

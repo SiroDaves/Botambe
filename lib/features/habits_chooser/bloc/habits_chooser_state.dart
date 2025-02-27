@@ -6,7 +6,7 @@ class HabitsChooserState with _$HabitsChooserState {
 
   const factory HabitsChooserState.loaded() = HabitsChooserLoadedState;
 
-  const factory HabitsChooserState.progress() = HabitsChooserProgressState;
+  const factory HabitsChooserState.loading() = HabitsChooserLoadingState;
 
   const factory HabitsChooserState.success() = HabitsChooserSuccessState;
 
