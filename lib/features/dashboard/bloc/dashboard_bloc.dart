@@ -9,50 +9,68 @@ import '../../../core/di/injectable.dart';
 import '../domain/dashboard_repository.dart';
 
 part 'dashboard_event.dart';
-part 'habits_chooser_state.dart';
+part 'dashboard_state.dart';
 
 part 'dashboard_bloc.freezed.dart';
 
-class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
-  HabitsChooserBloc() : super(const _HabitsChooserState()) {
-    on<FetchData>(_onFetchData);
-    on<SaveData>(_onSaveData);
+class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
+  DashboardBloc() : super(const _DashboardState()) {
+    on<DashboardFetchLocalData>(_onFetchLocalData);
+    on<DashboardFetchOnlineData>(_onFetchOnlineData);
+    on<DashboardSaveEntry>(_onSaveEntry);
   }
 
-  final _habitsRepo = HabitsChooserRepository();
+  final _dashboardRepo = DashboardRepository();
   final _prefsRepo = getIt<PrefsRepository>();
   final _dbRepo = getIt<DatabaseRepository>();
 
-  void _onFetchData(
-    FetchData event,
-    Emitter<HabitsChooserState> emit,
+  void _onFetchLocalData(
+    DashboardFetchLocalData event,
+    Emitter<DashboardState> emit,
   ) async {
     List<Habit> habits = [];
-    emit(const HabitsChooserLoadingState());
+    List<HabitEntry> entries = [];
+    emit(const DashboardLoadingState());
 
-    habits = await _habitsRepo.fetchHabits();
-    
-    if (habits.isNotEmpty) {
-      emit(HabitsChooserFetchedState(habits));
-    } else {
-      emit(HabitsChooserFailureState('Could not fetch habits'));
-    }
+    habits = await _dbRepo.fetchHabits();
+    entries = await _dbRepo.fetchHabitEntries();
+
+    emit(DashboardFetchedLocalState(habits, entries));
   }
 
-  void _onSaveData(
-    SaveData event,
-    Emitter<HabitsChooserState> emit,
+  void _onFetchOnlineData(
+    DashboardFetchOnlineData event,
+    Emitter<DashboardState> emit,
   ) async {
-    emit(const HabitsChooserLoadingState());
+    List<Habit> habits = [];
+    List<HabitEntry> entries = [];
+    emit(const DashboardLoadingState());
 
-    await _dbRepo.removeAllHabits();
-    for (final habit in event.habits) {
-      await _dbRepo.saveHabit(habit);
+    habits = await _dbRepo.fetchHabits();
+    entries = await _dashboardRepo.fetchHabitEntries();
+    if (entries.isNotEmpty) {
+      _dbRepo.removeAllHabitEntries();
+      for (final item in entries) {
+        _dbRepo.saveHabitEntry(entry: item);
+      }
+    } else {
+      entries = await _dbRepo.fetchHabitEntries();
     }
+    emit(DashboardFetchedOnlineState(habits, entries));
+  }
+
+  void _onSaveEntry(
+    DashboardSaveEntry event,
+    Emitter<DashboardState> emit,
+  ) async {
+    emit(const DashboardLoadingState());
+
+    await _dbRepo.saveHabitEntry(entry: event.entry);
+    await _dashboardRepo.saveHabitEntry(entry: event.entry);
 
     await Future<void>.delayed(const Duration(seconds: 10));
     _prefsRepo.setPrefBool(PrefConstants.isOnboardedKey, true);
 
-    emit(const HabitsChooserSuccessState());
+    emit(const DashboardEntrySavedState());
   }
 }

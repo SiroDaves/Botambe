@@ -80,6 +80,18 @@
             }
         }
     },
+    "addNewHabit": "Add a New Entry",
+    "@addNewHabit": {},
+    "newHabitEntry": "New Habit Entry",
+    "@newHabitEntry": {},
+    "entryHabit": "Entry Habit",
+    "@entryHabit": {},
+    "entryHours": "Hours Spent",
+    "@entryHours": {},
+    "entryTitle": "Entry Title",
+    "@entryTitle": {},
+    "entryDesc": "Entry Description (Optional)",
+    "@entryDesc": {},
     "misc": "misc",
     "@misc": {}
 }

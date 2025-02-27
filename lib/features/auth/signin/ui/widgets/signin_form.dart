@@ -8,14 +8,6 @@ class SigninForm extends StatelessWidget {
   Widget build(BuildContext context) {
     var l10n = AppLocalizations.of(context)!;
     var bloc = context.read<UserAuthBloc>();
-    void socialAuthSuccess(Session session) {
-      CustomSnackbar.show(
-        context,
-        l10n.authSuccess,
-        isSuccess: true,
-      );
-      parent.nextStep();
-    }
 
     return Padding(
       padding: const EdgeInsets.all(20),
@@ -38,7 +30,7 @@ class SigninForm extends StatelessWidget {
           const SizedBox(height: 20),
           [
             AppButton(
-              key: const Key('sigin_proceed_button'),
+              key: const Key('signin_button'),
               onPressed: () {
                 var validation = validateSignin(parent);
                 if (validation.validated) {
@@ -74,7 +66,7 @@ class SigninForm extends StatelessWidget {
           SupaSocialsAuth(
             socialProviders: [OAuthProvider.google],
             colored: true,
-            onSuccess: socialAuthSuccess,
+            onSuccess: (x) => parent.nextStep(),
             onError: (error) {
               CustomSnackbar.show(
                 context,

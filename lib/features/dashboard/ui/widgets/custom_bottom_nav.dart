@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../dashboard_screen.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final Function(int) onItemSelected;

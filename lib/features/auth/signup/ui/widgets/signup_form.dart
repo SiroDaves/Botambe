@@ -8,14 +8,6 @@ class SignupForm extends StatelessWidget {
   Widget build(BuildContext context) {
     var bloc = context.read<UserAuthBloc>();
     var l10n = AppLocalizations.of(context)!;
-    void socialAuthSuccess(Session session) {
-      CustomSnackbar.show(
-        context,
-        l10n.authSuccess,
-        isSuccess: true,
-      );
-      parent.nextStep();
-    }
 
     return Padding(
       padding: const EdgeInsets.all(20),
@@ -45,7 +37,7 @@ class SignupForm extends StatelessWidget {
           const SizedBox(height: 20),
           [
             AppButton(
-              key: const Key('signup_proceed_button'),
+              key: const Key('signup_button'),
               onPressed: () {
                 var validation = validateSignup(parent);
                 if (validation.validated) {
@@ -98,7 +90,7 @@ class SignupForm extends StatelessWidget {
           SupaSocialsAuth(
             socialProviders: [OAuthProvider.google],
             colored: true,
-            onSuccess: socialAuthSuccess,
+            onSuccess: (x) => parent.nextStep(),
             onError: (error) {
               CustomSnackbar.show(
                 context,

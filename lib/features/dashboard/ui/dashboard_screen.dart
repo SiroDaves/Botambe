@@ -1,22 +1,25 @@
-import 'package:flutter/material.dart';
-import 'package:styled_widget/styled_widget.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../common/data/models/models.dart';
 import '../../../common/repository/prefs_repository.dart';
 import '../../../common/utils/app_util.dart';
-import '../../../common/utils/constants/app_assets.dart';
 import '../../../common/widget/progress/custom_snackbar.dart';
 import '../../../core/di/injectable.dart';
 import '../../../core/navigator/route_names.dart';
-import '../../profile/widgets/numbers_widget.dart';
-import 'widgets/custom_bottom_nav.dart';
-import 'widgets/home_widgets.dart';
-import '../../profile/widgets/avatar_widget.dart';
+import '../../entries/ui/habit_entry_screen.dart';
+import '../../habits/habits_screen.dart';
+import '../../home/home_screen.dart';
+import '../../profile/profile_screen.dart';
+import '../../stats/statistics_screen.dart';
+import '../bloc/dashboard_bloc.dart';
 
-part 'habits_screen.dart';
-part 'home_screen.dart';
-part '../../profile/profile_screen.dart';
-part 'statistics_screen.dart';
+part 'widgets/custom_bottom_nav.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -27,19 +30,43 @@ class DashboardScreen extends StatefulWidget {
 
 class DashboardScreenState extends State<DashboardScreen> {
   late PrefsRepository prefRepo;
+  late DashboardBloc _bloc;
+  Timer? _syncTimer;
   late User user;
   int selectedIndex = 0;
-  final SupabaseClient _supabase = Supabase.instance.client;
+  List<Habit> habits = [], todayHabits = [];
+  List<HabitEntry> entries = [];
+  bool todayIsWeekday = true, periodicSyncStarted = false;
+  DateTime selectedDate = DateTime.now();
+  final SupabaseClient supabase = Supabase.instance.client;
+  String selectedDay = DateFormat('EEEE').format(DateTime.now());
 
   @override
   void initState() {
     super.initState();
     prefRepo = getIt<PrefsRepository>();
     try {
-      user = _supabase.auth.currentSession!.user;
+      user = supabase.auth.currentSession!.user;
     } catch (e) {
       logger('User not found: $e');
     }
+  }
+
+  @override
+  void dispose() {
+    _syncTimer?.cancel();
+    super.dispose();
+  }
+
+  void startPeriodicSync() {
+    periodicSyncStarted = true;
+    _syncTimer = Timer.periodic(Duration(minutes: 5), (_) async {
+      if (await isConnectedToInternet()) _bloc.add(DashboardFetchOnlineData());
+    });
+  }
+
+  bool isWeekday(DateTime date) {
+    return date.weekday >= DateTime.monday && date.weekday <= DateTime.friday;
   }
 
   void onItemTapped(int index) {
@@ -48,26 +75,84 @@ class DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> screens = [
-      HomeScreen(parent: this),
-      HabitsScreen(),
-      StatisticsScreen(),
-      ProfileScreen(parent: this),
-      const SizedBox(),
-    ];
+    var l10n = AppLocalizations.of(context)!;
+    todayIsWeekday = isWeekday(selectedDate);
+    return BlocProvider(
+      create: (context) {
+        final bloc = DashboardBloc();
+        isConnectedToInternet().then((isConnected) {
+          bloc.add(isConnected
+              ? DashboardFetchOnlineData()
+              : DashboardFetchLocalData());
+        });
+        return bloc;
+      },
+      child: BlocConsumer<DashboardBloc, DashboardState>(
+        listener: (context, state) {
+          _bloc = context.read<DashboardBloc>();
+          if (state is DashboardFetchedOnlineState) {
+            setState(() {
+              habits = state.habits;
+              entries = state.entries;
+            });
+            if (!periodicSyncStarted) startPeriodicSync();
+          } else if (state is DashboardFetchedLocalState) {
+            setState(() {
+              habits = state.habits;
+              entries = state.entries;
+            });
+            if (!periodicSyncStarted) startPeriodicSync();
+          } else if (state is DashboardSuccessState) {
+            CustomSnackbar.show(
+              context,
+              l10n.habitChooserSuccess,
+              isSuccess: true,
+            );
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              RouteNames.dashboard,
+              (route) => false,
+            );
+          } else if (state is DashboardFailureState) {
+            CustomSnackbar.show(context, state.feedback);
+          }
+        },
+        builder: (context, state) {
+          final List<Widget> screens = [
+            HomeScreen(parent: this),
+            HabitsScreen(parent: this),
+            StatisticsScreen(parent: this),
+            ProfileScreen(parent: this),
+            const SizedBox(),
+          ];
 
-    return Scaffold(
-      body: screens[selectedIndex],
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.pinkAccent,
-        shape: const CircleBorder(),
-        child: const Icon(Icons.add, color: Colors.white),
-        onPressed: () {},
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomBottomNavBar(
-        onItemSelected: onItemTapped,
-        selectedIndex: selectedIndex,
+          return Scaffold(
+            body: screens[selectedIndex],
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.pinkAccent,
+              shape: const CircleBorder(),
+              child: const Icon(Icons.add, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HabitEntryScreen(
+                      habits: habits
+                          .where((habit) => habit.isWeekday == todayIsWeekday)
+                          .toList(),
+                    ),
+                  ),
+                );
+              },
+            ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            bottomNavigationBar: CustomBottomNavBar(
+              onItemSelected: onItemTapped,
+              selectedIndex: selectedIndex,
+            ),
+          );
+        },
       ),
     );
   }

@@ -14,12 +14,20 @@ class DatabaseRepositoryImpl implements DatabaseRepository {
   }
 
   @override
-  Future<void> saveHabitEntry(HabitEntry entry) async {
+  Future<void> saveHabitEntry({required HabitEntry entry}) async {
+    String timestamp = "${DateTime.now().toUtc().toIso8601String()}+00:00";
+
+    if (entry.doneAt!.isEmpty) {
+      entry.doneAt = timestamp;
+    }
+    if (entry.createdAt!.isEmpty) {
+      entry.createdAt = timestamp;
+    }
     return _appDB.entriesDao.insertHabitEntry(entry);
   }
 
   @override
-  Future<void> deleteHabitEntry(HabitEntry entry) async {
+  Future<void> removeHabitEntry({required HabitEntry entry}) async {
     return _appDB.entriesDao.deleteHabitEntry(entry);
   }
 
@@ -34,12 +42,12 @@ class DatabaseRepositoryImpl implements DatabaseRepository {
   }
 
   @override
-  Future<void> saveHabit(Habit habit) async {
+  Future<void> saveHabit({required Habit habit}) async {
     return _appDB.habitsDao.insertHabit(habit);
   }
 
   @override
-  Future<void> deleteHabit(Habit habit) async {
+  Future<void> removeHabit({required Habit habit}) async {
     return _appDB.habitsDao.deleteHabit(habit);
   }
 
@@ -47,5 +55,4 @@ class DatabaseRepositoryImpl implements DatabaseRepository {
   Future<void> removeAllHabits() async {
     return _appDB.habitsDao.deleteAllHabits();
   }
-
 }

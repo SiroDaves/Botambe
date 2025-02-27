@@ -1,11 +1,21 @@
-part of '../dashboard/ui/dashboard_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../../common/utils/constants/app_assets.dart';
+import '../../common/widget/progress/custom_snackbar.dart';
+import '../../core/navigator/route_names.dart';
+import '../dashboard/ui/dashboard_screen.dart';
+
+part 'widgets/avatar_widget.dart';
+part 'widgets/numbers_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   final DashboardScreenState parent;
   const ProfileScreen({super.key, required this.parent});
 
   void _signOut(BuildContext context) {
-     parent._supabase.auth.signOut();
+    parent.supabase.auth.signOut();
     CustomSnackbar.show(
       context,
       "Exit is that way, We'll miss you",
@@ -85,7 +95,8 @@ class ProfileScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           AvatarWidget(
-            imagePath: AppAssets.imgSiroDaves,
+              radius: 120,
+              imagePath: 'https://siro.co.ke',
             onClicked: () async {},
           ),
           const SizedBox(height: 10),

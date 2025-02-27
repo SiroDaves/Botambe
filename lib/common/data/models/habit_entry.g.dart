@@ -11,6 +11,9 @@ HabitEntry _$HabitEntryFromJson(Map<String, dynamic> json) => HabitEntry(
       habit: (json['habit'] as num?)?.toInt(),
       hours: (json['hours'] as num?)?.toDouble(),
       doneAt: json['doneAt'] as String?,
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      photos: json['photos'] as String?,
       createdAt: json['createdAt'] as String?,
     )..id = (json['id'] as num?)?.toInt();
 
@@ -21,5 +24,8 @@ Map<String, dynamic> _$HabitEntryToJson(HabitEntry instance) =>
       'habit': instance.habit,
       'hours': instance.hours,
       'doneAt': instance.doneAt,
+      'title': instance.title,
+      'description': instance.description,
+      'photos': instance.photos,
       'createdAt': instance.createdAt,
     };

@@ -1,15 +1,17 @@
-import 'package:botambe/common/utils/constants/app_assets.dart';
-import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+part of '../profile_screen.dart';
 
 class AvatarWidget extends StatelessWidget {
   final String? imagePath;
+  final double radius;
   final VoidCallback onClicked;
+  final bool showEdit;
 
   const AvatarWidget({
     super.key,
     required this.imagePath,
+    required this.radius,
     required this.onClicked,
+    this.showEdit = false,
   });
 
   @override
@@ -20,11 +22,13 @@ class AvatarWidget extends StatelessWidget {
       child: Stack(
         children: [
           buildShadowedImage(),
-          Positioned(
-            bottom: 0,
-            right: 4,
-            child: buildEditIcon(color),
-          ),
+          if (showEdit) ...[
+            Positioned(
+              bottom: radius * 0.05,
+              right: radius * 0.1,
+              child: buildEditIcon(color),
+            ),
+          ],
         ],
       ),
     );
@@ -37,9 +41,9 @@ class AvatarWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.2),
-            blurRadius: 8,
-            spreadRadius: 2,
-            offset: const Offset(0, 4),
+            blurRadius: radius * 0.15,
+            spreadRadius: radius * 0.05,
+            offset: Offset(0, radius * 0.1),
           ),
         ],
       ),
@@ -56,16 +60,17 @@ class AvatarWidget extends StatelessWidget {
           child: CachedNetworkImage(
             imageUrl: imagePath ?? '',
             fit: BoxFit.cover,
-            width: 128,
-            height: 128,
-            placeholder: (context, url) => const CircleAvatar(
-              radius: 64,
+            width: radius * 2,
+            height: radius * 2,
+            placeholder: (context, url) => CircleAvatar(
+              radius: radius,
               backgroundColor: Colors.grey,
-              child: Icon(Icons.person, size: 40, color: Colors.white),
+              child:
+                  Icon(Icons.person, size: radius * 0.6, color: Colors.white),
             ),
-            errorWidget: (context, url, error) => const CircleAvatar(
-              radius: 64,
-              backgroundImage: AssetImage(AppAssets.imgSiroDaves),
+            errorWidget: (context, url, error) => CircleAvatar(
+              radius: radius,
+              backgroundImage: const AssetImage(AppAssets.imgSiroDaves),
             ),
           ),
         ),
@@ -75,14 +80,14 @@ class AvatarWidget extends StatelessWidget {
 
   Widget buildEditIcon(Color color) => buildCircle(
         color: Colors.white,
-        all: 3,
+        all: radius * 0.08,
         child: buildCircle(
           color: color,
-          all: 8,
-          child: const Icon(
+          all: radius * 0.2,
+          child: Icon(
             Icons.edit,
             color: Colors.white,
-            size: 20,
+            size: radius * 0.3,
           ),
         ),
       );

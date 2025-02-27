@@ -15,101 +15,110 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HabitsChooserEvent {
+mixin _$DashboardEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetch,
-    required TResult Function(List<Habit> habits) save,
+    required TResult Function() fetchlocal,
+    required TResult Function() fetchOnline,
+    required TResult Function(HabitEntry entry) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetch,
-    TResult? Function(List<Habit> habits)? save,
+    TResult? Function()? fetchlocal,
+    TResult? Function()? fetchOnline,
+    TResult? Function(HabitEntry entry)? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function(List<Habit> habits)? save,
+    TResult Function()? fetchlocal,
+    TResult Function()? fetchOnline,
+    TResult Function(HabitEntry entry)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchData value) fetch,
-    required TResult Function(SaveData value) save,
+    required TResult Function(DashboardFetchLocalData value) fetchlocal,
+    required TResult Function(DashboardFetchOnlineData value) fetchOnline,
+    required TResult Function(DashboardSaveEntry value) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchData value)? fetch,
-    TResult? Function(SaveData value)? save,
+    TResult? Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult? Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult? Function(DashboardSaveEntry value)? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchData value)? fetch,
-    TResult Function(SaveData value)? save,
+    TResult Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult Function(DashboardSaveEntry value)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HabitsChooserEventCopyWith<$Res> {
-  factory $HabitsChooserEventCopyWith(
-          HabitsChooserEvent value, $Res Function(HabitsChooserEvent) then) =
-      _$HabitsChooserEventCopyWithImpl<$Res, HabitsChooserEvent>;
+abstract class $DashboardEventCopyWith<$Res> {
+  factory $DashboardEventCopyWith(
+          DashboardEvent value, $Res Function(DashboardEvent) then) =
+      _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
 }
 
 /// @nodoc
-class _$HabitsChooserEventCopyWithImpl<$Res, $Val extends HabitsChooserEvent>
-    implements $HabitsChooserEventCopyWith<$Res> {
-  _$HabitsChooserEventCopyWithImpl(this._value, this._then);
+class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
+    implements $DashboardEventCopyWith<$Res> {
+  _$DashboardEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HabitsChooserEvent
+  /// Create a copy of DashboardEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$FetchDataImplCopyWith<$Res> {
-  factory _$$FetchDataImplCopyWith(
-          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
-      __$$FetchDataImplCopyWithImpl<$Res>;
+abstract class _$$DashboardFetchLocalDataImplCopyWith<$Res> {
+  factory _$$DashboardFetchLocalDataImplCopyWith(
+          _$DashboardFetchLocalDataImpl value,
+          $Res Function(_$DashboardFetchLocalDataImpl) then) =
+      __$$DashboardFetchLocalDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchDataImplCopyWithImpl<$Res>
-    extends _$HabitsChooserEventCopyWithImpl<$Res, _$FetchDataImpl>
-    implements _$$FetchDataImplCopyWith<$Res> {
-  __$$FetchDataImplCopyWithImpl(
-      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
+class __$$DashboardFetchLocalDataImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$DashboardFetchLocalDataImpl>
+    implements _$$DashboardFetchLocalDataImplCopyWith<$Res> {
+  __$$DashboardFetchLocalDataImplCopyWithImpl(
+      _$DashboardFetchLocalDataImpl _value,
+      $Res Function(_$DashboardFetchLocalDataImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserEvent
+  /// Create a copy of DashboardEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$FetchDataImpl implements FetchData {
-  const _$FetchDataImpl();
+class _$DashboardFetchLocalDataImpl implements DashboardFetchLocalData {
+  const _$DashboardFetchLocalDataImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserEvent.fetch()';
+    return 'DashboardEvent.fetchlocal()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchDataImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$DashboardFetchLocalDataImpl);
   }
 
   @override
@@ -118,30 +127,33 @@ class _$FetchDataImpl implements FetchData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetch,
-    required TResult Function(List<Habit> habits) save,
+    required TResult Function() fetchlocal,
+    required TResult Function() fetchOnline,
+    required TResult Function(HabitEntry entry) save,
   }) {
-    return fetch();
+    return fetchlocal();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetch,
-    TResult? Function(List<Habit> habits)? save,
+    TResult? Function()? fetchlocal,
+    TResult? Function()? fetchOnline,
+    TResult? Function(HabitEntry entry)? save,
   }) {
-    return fetch?.call();
+    return fetchlocal?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function(List<Habit> habits)? save,
+    TResult Function()? fetchlocal,
+    TResult Function()? fetchOnline,
+    TResult Function(HabitEntry entry)? save,
     required TResult orElse(),
   }) {
-    if (fetch != null) {
-      return fetch();
+    if (fetchlocal != null) {
+      return fetchlocal();
     }
     return orElse();
   }
@@ -149,137 +161,113 @@ class _$FetchDataImpl implements FetchData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchData value) fetch,
-    required TResult Function(SaveData value) save,
+    required TResult Function(DashboardFetchLocalData value) fetchlocal,
+    required TResult Function(DashboardFetchOnlineData value) fetchOnline,
+    required TResult Function(DashboardSaveEntry value) save,
   }) {
-    return fetch(this);
+    return fetchlocal(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchData value)? fetch,
-    TResult? Function(SaveData value)? save,
+    TResult? Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult? Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult? Function(DashboardSaveEntry value)? save,
   }) {
-    return fetch?.call(this);
+    return fetchlocal?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchData value)? fetch,
-    TResult Function(SaveData value)? save,
+    TResult Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult Function(DashboardSaveEntry value)? save,
     required TResult orElse(),
   }) {
-    if (fetch != null) {
-      return fetch(this);
+    if (fetchlocal != null) {
+      return fetchlocal(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchData implements HabitsChooserEvent {
-  const factory FetchData() = _$FetchDataImpl;
+abstract class DashboardFetchLocalData implements DashboardEvent {
+  const factory DashboardFetchLocalData() = _$DashboardFetchLocalDataImpl;
 }
 
 /// @nodoc
-abstract class _$$SaveDataImplCopyWith<$Res> {
-  factory _$$SaveDataImplCopyWith(
-          _$SaveDataImpl value, $Res Function(_$SaveDataImpl) then) =
-      __$$SaveDataImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Habit> habits});
+abstract class _$$DashboardFetchOnlineDataImplCopyWith<$Res> {
+  factory _$$DashboardFetchOnlineDataImplCopyWith(
+          _$DashboardFetchOnlineDataImpl value,
+          $Res Function(_$DashboardFetchOnlineDataImpl) then) =
+      __$$DashboardFetchOnlineDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SaveDataImplCopyWithImpl<$Res>
-    extends _$HabitsChooserEventCopyWithImpl<$Res, _$SaveDataImpl>
-    implements _$$SaveDataImplCopyWith<$Res> {
-  __$$SaveDataImplCopyWithImpl(
-      _$SaveDataImpl _value, $Res Function(_$SaveDataImpl) _then)
+class __$$DashboardFetchOnlineDataImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$DashboardFetchOnlineDataImpl>
+    implements _$$DashboardFetchOnlineDataImplCopyWith<$Res> {
+  __$$DashboardFetchOnlineDataImplCopyWithImpl(
+      _$DashboardFetchOnlineDataImpl _value,
+      $Res Function(_$DashboardFetchOnlineDataImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserEvent
+  /// Create a copy of DashboardEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? habits = null,
-  }) {
-    return _then(_$SaveDataImpl(
-      null == habits
-          ? _value._habits
-          : habits // ignore: cast_nullable_to_non_nullable
-              as List<Habit>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$SaveDataImpl implements SaveData {
-  const _$SaveDataImpl(final List<Habit> habits) : _habits = habits;
-
-  final List<Habit> _habits;
-  @override
-  List<Habit> get habits {
-    if (_habits is EqualUnmodifiableListView) return _habits;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_habits);
-  }
+class _$DashboardFetchOnlineDataImpl implements DashboardFetchOnlineData {
+  const _$DashboardFetchOnlineDataImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserEvent.save(habits: $habits)';
+    return 'DashboardEvent.fetchOnline()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SaveDataImpl &&
-            const DeepCollectionEquality().equals(other._habits, _habits));
+            other is _$DashboardFetchOnlineDataImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_habits));
-
-  /// Create a copy of HabitsChooserEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SaveDataImplCopyWith<_$SaveDataImpl> get copyWith =>
-      __$$SaveDataImplCopyWithImpl<_$SaveDataImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetch,
-    required TResult Function(List<Habit> habits) save,
+    required TResult Function() fetchlocal,
+    required TResult Function() fetchOnline,
+    required TResult Function(HabitEntry entry) save,
   }) {
-    return save(habits);
+    return fetchOnline();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetch,
-    TResult? Function(List<Habit> habits)? save,
+    TResult? Function()? fetchlocal,
+    TResult? Function()? fetchOnline,
+    TResult? Function(HabitEntry entry)? save,
   }) {
-    return save?.call(habits);
+    return fetchOnline?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetch,
-    TResult Function(List<Habit> habits)? save,
+    TResult Function()? fetchlocal,
+    TResult Function()? fetchOnline,
+    TResult Function(HabitEntry entry)? save,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save(habits);
+    if (fetchOnline != null) {
+      return fetchOnline();
     }
     return orElse();
   }
@@ -287,8 +275,148 @@ class _$SaveDataImpl implements SaveData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchData value) fetch,
-    required TResult Function(SaveData value) save,
+    required TResult Function(DashboardFetchLocalData value) fetchlocal,
+    required TResult Function(DashboardFetchOnlineData value) fetchOnline,
+    required TResult Function(DashboardSaveEntry value) save,
+  }) {
+    return fetchOnline(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult? Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult? Function(DashboardSaveEntry value)? save,
+  }) {
+    return fetchOnline?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult Function(DashboardSaveEntry value)? save,
+    required TResult orElse(),
+  }) {
+    if (fetchOnline != null) {
+      return fetchOnline(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DashboardFetchOnlineData implements DashboardEvent {
+  const factory DashboardFetchOnlineData() = _$DashboardFetchOnlineDataImpl;
+}
+
+/// @nodoc
+abstract class _$$DashboardSaveEntryImplCopyWith<$Res> {
+  factory _$$DashboardSaveEntryImplCopyWith(_$DashboardSaveEntryImpl value,
+          $Res Function(_$DashboardSaveEntryImpl) then) =
+      __$$DashboardSaveEntryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({HabitEntry entry});
+}
+
+/// @nodoc
+class __$$DashboardSaveEntryImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$DashboardSaveEntryImpl>
+    implements _$$DashboardSaveEntryImplCopyWith<$Res> {
+  __$$DashboardSaveEntryImplCopyWithImpl(_$DashboardSaveEntryImpl _value,
+      $Res Function(_$DashboardSaveEntryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entry = null,
+  }) {
+    return _then(_$DashboardSaveEntryImpl(
+      null == entry
+          ? _value.entry
+          : entry // ignore: cast_nullable_to_non_nullable
+              as HabitEntry,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DashboardSaveEntryImpl implements DashboardSaveEntry {
+  const _$DashboardSaveEntryImpl(this.entry);
+
+  @override
+  final HabitEntry entry;
+
+  @override
+  String toString() {
+    return 'DashboardEvent.save(entry: $entry)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DashboardSaveEntryImpl &&
+            (identical(other.entry, entry) || other.entry == entry));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, entry);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DashboardSaveEntryImplCopyWith<_$DashboardSaveEntryImpl> get copyWith =>
+      __$$DashboardSaveEntryImplCopyWithImpl<_$DashboardSaveEntryImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchlocal,
+    required TResult Function() fetchOnline,
+    required TResult Function(HabitEntry entry) save,
+  }) {
+    return save(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchlocal,
+    TResult? Function()? fetchOnline,
+    TResult? Function(HabitEntry entry)? save,
+  }) {
+    return save?.call(entry);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchlocal,
+    TResult Function()? fetchOnline,
+    TResult Function(HabitEntry entry)? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(entry);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DashboardFetchLocalData value) fetchlocal,
+    required TResult Function(DashboardFetchOnlineData value) fetchOnline,
+    required TResult Function(DashboardSaveEntry value) save,
   }) {
     return save(this);
   }
@@ -296,8 +424,9 @@ class _$SaveDataImpl implements SaveData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchData value)? fetch,
-    TResult? Function(SaveData value)? save,
+    TResult? Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult? Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult? Function(DashboardSaveEntry value)? save,
   }) {
     return save?.call(this);
   }
@@ -305,8 +434,9 @@ class _$SaveDataImpl implements SaveData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchData value)? fetch,
-    TResult Function(SaveData value)? save,
+    TResult Function(DashboardFetchLocalData value)? fetchlocal,
+    TResult Function(DashboardFetchOnlineData value)? fetchOnline,
+    TResult Function(DashboardSaveEntry value)? save,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -316,27 +446,32 @@ class _$SaveDataImpl implements SaveData {
   }
 }
 
-abstract class SaveData implements HabitsChooserEvent {
-  const factory SaveData(final List<Habit> habits) = _$SaveDataImpl;
+abstract class DashboardSaveEntry implements DashboardEvent {
+  const factory DashboardSaveEntry(final HabitEntry entry) =
+      _$DashboardSaveEntryImpl;
 
-  List<Habit> get habits;
+  HabitEntry get entry;
 
-  /// Create a copy of HabitsChooserEvent
+  /// Create a copy of DashboardEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SaveDataImplCopyWith<_$SaveDataImpl> get copyWith =>
+  _$$DashboardSaveEntryImplCopyWith<_$DashboardSaveEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$HabitsChooserState {
+mixin _$DashboardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -346,7 +481,11 @@ mixin _$HabitsChooserState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -356,98 +495,108 @@ mixin _$HabitsChooserState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HabitsChooserStateCopyWith<$Res> {
-  factory $HabitsChooserStateCopyWith(
-          HabitsChooserState value, $Res Function(HabitsChooserState) then) =
-      _$HabitsChooserStateCopyWithImpl<$Res, HabitsChooserState>;
+abstract class $DashboardStateCopyWith<$Res> {
+  factory $DashboardStateCopyWith(
+          DashboardState value, $Res Function(DashboardState) then) =
+      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
 }
 
 /// @nodoc
-class _$HabitsChooserStateCopyWithImpl<$Res, $Val extends HabitsChooserState>
-    implements $HabitsChooserStateCopyWith<$Res> {
-  _$HabitsChooserStateCopyWithImpl(this._value, this._then);
+class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
+    implements $DashboardStateCopyWith<$Res> {
+  _$DashboardStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserStateImplCopyWith(_$HabitsChooserStateImpl value,
-          $Res Function(_$HabitsChooserStateImpl) then) =
-      __$$HabitsChooserStateImplCopyWithImpl<$Res>;
+abstract class _$$DashboardStateImplCopyWith<$Res> {
+  factory _$$DashboardStateImplCopyWith(_$DashboardStateImpl value,
+          $Res Function(_$DashboardStateImpl) then) =
+      __$$DashboardStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HabitsChooserStateImplCopyWithImpl<$Res>
-    extends _$HabitsChooserStateCopyWithImpl<$Res, _$HabitsChooserStateImpl>
-    implements _$$HabitsChooserStateImplCopyWith<$Res> {
-  __$$HabitsChooserStateImplCopyWithImpl(_$HabitsChooserStateImpl _value,
-      $Res Function(_$HabitsChooserStateImpl) _then)
+class __$$DashboardStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardStateImpl>
+    implements _$$DashboardStateImplCopyWith<$Res> {
+  __$$DashboardStateImplCopyWithImpl(
+      _$DashboardStateImpl _value, $Res Function(_$DashboardStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$HabitsChooserStateImpl implements _HabitsChooserState {
-  const _$HabitsChooserStateImpl();
+class _$DashboardStateImpl implements _DashboardState {
+  const _$DashboardStateImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserState.initial()';
+    return 'DashboardState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$HabitsChooserStateImpl);
+        (other.runtimeType == runtimeType && other is _$DashboardStateImpl);
   }
 
   @override
@@ -460,7 +609,11 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) {
     return initial();
@@ -473,7 +626,11 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) {
     return initial?.call();
@@ -486,7 +643,11 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
@@ -499,12 +660,14 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) {
     return initial(this);
   }
@@ -512,12 +675,14 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -525,12 +690,14 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -540,47 +707,44 @@ class _$HabitsChooserStateImpl implements _HabitsChooserState {
   }
 }
 
-abstract class _HabitsChooserState implements HabitsChooserState {
-  const factory _HabitsChooserState() = _$HabitsChooserStateImpl;
+abstract class _DashboardState implements DashboardState {
+  const factory _DashboardState() = _$DashboardStateImpl;
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserLoadedStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserLoadedStateImplCopyWith(
-          _$HabitsChooserLoadedStateImpl value,
-          $Res Function(_$HabitsChooserLoadedStateImpl) then) =
-      __$$HabitsChooserLoadedStateImplCopyWithImpl<$Res>;
+abstract class _$$DashboardLoadedStateImplCopyWith<$Res> {
+  factory _$$DashboardLoadedStateImplCopyWith(_$DashboardLoadedStateImpl value,
+          $Res Function(_$DashboardLoadedStateImpl) then) =
+      __$$DashboardLoadedStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HabitsChooserLoadedStateImplCopyWithImpl<$Res>
-    extends _$HabitsChooserStateCopyWithImpl<$Res,
-        _$HabitsChooserLoadedStateImpl>
-    implements _$$HabitsChooserLoadedStateImplCopyWith<$Res> {
-  __$$HabitsChooserLoadedStateImplCopyWithImpl(
-      _$HabitsChooserLoadedStateImpl _value,
-      $Res Function(_$HabitsChooserLoadedStateImpl) _then)
+class __$$DashboardLoadedStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardLoadedStateImpl>
+    implements _$$DashboardLoadedStateImplCopyWith<$Res> {
+  __$$DashboardLoadedStateImplCopyWithImpl(_$DashboardLoadedStateImpl _value,
+      $Res Function(_$DashboardLoadedStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
-  const _$HabitsChooserLoadedStateImpl();
+class _$DashboardLoadedStateImpl implements DashboardLoadedState {
+  const _$DashboardLoadedStateImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserState.loaded()';
+    return 'DashboardState.loaded()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitsChooserLoadedStateImpl);
+            other is _$DashboardLoadedStateImpl);
   }
 
   @override
@@ -593,7 +757,11 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) {
     return loaded();
@@ -606,7 +774,11 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) {
     return loaded?.call();
@@ -619,7 +791,11 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
@@ -632,12 +808,14 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) {
     return loaded(this);
   }
@@ -645,12 +823,14 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) {
     return loaded?.call(this);
   }
@@ -658,12 +838,14 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -673,47 +855,45 @@ class _$HabitsChooserLoadedStateImpl implements HabitsChooserLoadedState {
   }
 }
 
-abstract class HabitsChooserLoadedState implements HabitsChooserState {
-  const factory HabitsChooserLoadedState() = _$HabitsChooserLoadedStateImpl;
+abstract class DashboardLoadedState implements DashboardState {
+  const factory DashboardLoadedState() = _$DashboardLoadedStateImpl;
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserLoadingStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserLoadingStateImplCopyWith(
-          _$HabitsChooserLoadingStateImpl value,
-          $Res Function(_$HabitsChooserLoadingStateImpl) then) =
-      __$$HabitsChooserLoadingStateImplCopyWithImpl<$Res>;
+abstract class _$$DashboardLoadingStateImplCopyWith<$Res> {
+  factory _$$DashboardLoadingStateImplCopyWith(
+          _$DashboardLoadingStateImpl value,
+          $Res Function(_$DashboardLoadingStateImpl) then) =
+      __$$DashboardLoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HabitsChooserLoadingStateImplCopyWithImpl<$Res>
-    extends _$HabitsChooserStateCopyWithImpl<$Res,
-        _$HabitsChooserLoadingStateImpl>
-    implements _$$HabitsChooserLoadingStateImplCopyWith<$Res> {
-  __$$HabitsChooserLoadingStateImplCopyWithImpl(
-      _$HabitsChooserLoadingStateImpl _value,
-      $Res Function(_$HabitsChooserLoadingStateImpl) _then)
+class __$$DashboardLoadingStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardLoadingStateImpl>
+    implements _$$DashboardLoadingStateImplCopyWith<$Res> {
+  __$$DashboardLoadingStateImplCopyWithImpl(_$DashboardLoadingStateImpl _value,
+      $Res Function(_$DashboardLoadingStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
-  const _$HabitsChooserLoadingStateImpl();
+class _$DashboardLoadingStateImpl implements DashboardLoadingState {
+  const _$DashboardLoadingStateImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserState.loading()';
+    return 'DashboardState.loading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitsChooserLoadingStateImpl);
+            other is _$DashboardLoadingStateImpl);
   }
 
   @override
@@ -726,7 +906,11 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) {
     return loading();
@@ -739,7 +923,11 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) {
     return loading?.call();
@@ -752,7 +940,11 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
@@ -765,12 +957,14 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) {
     return loading(this);
   }
@@ -778,12 +972,14 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -791,12 +987,14 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -806,47 +1004,45 @@ class _$HabitsChooserLoadingStateImpl implements HabitsChooserLoadingState {
   }
 }
 
-abstract class HabitsChooserLoadingState implements HabitsChooserState {
-  const factory HabitsChooserLoadingState() = _$HabitsChooserLoadingStateImpl;
+abstract class DashboardLoadingState implements DashboardState {
+  const factory DashboardLoadingState() = _$DashboardLoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserSuccessStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserSuccessStateImplCopyWith(
-          _$HabitsChooserSuccessStateImpl value,
-          $Res Function(_$HabitsChooserSuccessStateImpl) then) =
-      __$$HabitsChooserSuccessStateImplCopyWithImpl<$Res>;
+abstract class _$$DashboardSuccessStateImplCopyWith<$Res> {
+  factory _$$DashboardSuccessStateImplCopyWith(
+          _$DashboardSuccessStateImpl value,
+          $Res Function(_$DashboardSuccessStateImpl) then) =
+      __$$DashboardSuccessStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HabitsChooserSuccessStateImplCopyWithImpl<$Res>
-    extends _$HabitsChooserStateCopyWithImpl<$Res,
-        _$HabitsChooserSuccessStateImpl>
-    implements _$$HabitsChooserSuccessStateImplCopyWith<$Res> {
-  __$$HabitsChooserSuccessStateImplCopyWithImpl(
-      _$HabitsChooserSuccessStateImpl _value,
-      $Res Function(_$HabitsChooserSuccessStateImpl) _then)
+class __$$DashboardSuccessStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardSuccessStateImpl>
+    implements _$$DashboardSuccessStateImplCopyWith<$Res> {
+  __$$DashboardSuccessStateImplCopyWithImpl(_$DashboardSuccessStateImpl _value,
+      $Res Function(_$DashboardSuccessStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
-  const _$HabitsChooserSuccessStateImpl();
+class _$DashboardSuccessStateImpl implements DashboardSuccessState {
+  const _$DashboardSuccessStateImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserState.success()';
+    return 'DashboardState.success()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitsChooserSuccessStateImpl);
+            other is _$DashboardSuccessStateImpl);
   }
 
   @override
@@ -859,7 +1055,11 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) {
     return success();
@@ -872,7 +1072,11 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) {
     return success?.call();
@@ -885,7 +1089,11 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
@@ -898,12 +1106,14 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) {
     return success(this);
   }
@@ -911,12 +1121,14 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) {
     return success?.call(this);
   }
@@ -924,12 +1136,14 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -939,85 +1153,50 @@ class _$HabitsChooserSuccessStateImpl implements HabitsChooserSuccessState {
   }
 }
 
-abstract class HabitsChooserSuccessState implements HabitsChooserState {
-  const factory HabitsChooserSuccessState() = _$HabitsChooserSuccessStateImpl;
+abstract class DashboardSuccessState implements DashboardState {
+  const factory DashboardSuccessState() = _$DashboardSuccessStateImpl;
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserFetchedStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserFetchedStateImplCopyWith(
-          _$HabitsChooserFetchedStateImpl value,
-          $Res Function(_$HabitsChooserFetchedStateImpl) then) =
-      __$$HabitsChooserFetchedStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Habit> habits});
+abstract class _$$DashboardEntrySavedStateImplCopyWith<$Res> {
+  factory _$$DashboardEntrySavedStateImplCopyWith(
+          _$DashboardEntrySavedStateImpl value,
+          $Res Function(_$DashboardEntrySavedStateImpl) then) =
+      __$$DashboardEntrySavedStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$HabitsChooserFetchedStateImplCopyWithImpl<$Res>
-    extends _$HabitsChooserStateCopyWithImpl<$Res,
-        _$HabitsChooserFetchedStateImpl>
-    implements _$$HabitsChooserFetchedStateImplCopyWith<$Res> {
-  __$$HabitsChooserFetchedStateImplCopyWithImpl(
-      _$HabitsChooserFetchedStateImpl _value,
-      $Res Function(_$HabitsChooserFetchedStateImpl) _then)
+class __$$DashboardEntrySavedStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardEntrySavedStateImpl>
+    implements _$$DashboardEntrySavedStateImplCopyWith<$Res> {
+  __$$DashboardEntrySavedStateImplCopyWithImpl(
+      _$DashboardEntrySavedStateImpl _value,
+      $Res Function(_$DashboardEntrySavedStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? habits = null,
-  }) {
-    return _then(_$HabitsChooserFetchedStateImpl(
-      null == habits
-          ? _value._habits
-          : habits // ignore: cast_nullable_to_non_nullable
-              as List<Habit>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
-  const _$HabitsChooserFetchedStateImpl(final List<Habit> habits)
-      : _habits = habits;
-
-  final List<Habit> _habits;
-  @override
-  List<Habit> get habits {
-    if (_habits is EqualUnmodifiableListView) return _habits;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_habits);
-  }
+class _$DashboardEntrySavedStateImpl implements DashboardEntrySavedState {
+  const _$DashboardEntrySavedStateImpl();
 
   @override
   String toString() {
-    return 'HabitsChooserState.fetched(habits: $habits)';
+    return 'DashboardState.saved()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitsChooserFetchedStateImpl &&
-            const DeepCollectionEquality().equals(other._habits, _habits));
+            other is _$DashboardEntrySavedStateImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_habits));
-
-  /// Create a copy of HabitsChooserState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$HabitsChooserFetchedStateImplCopyWith<_$HabitsChooserFetchedStateImpl>
-      get copyWith => __$$HabitsChooserFetchedStateImplCopyWithImpl<
-          _$HabitsChooserFetchedStateImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -1026,10 +1205,14 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) {
-    return fetched(habits);
+    return saved();
   }
 
   @override
@@ -1039,10 +1222,14 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) {
-    return fetched?.call(habits);
+    return saved?.call();
   }
 
   @override
@@ -1052,12 +1239,16 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
-    if (fetched != null) {
-      return fetched(habits);
+    if (saved != null) {
+      return saved();
     }
     return orElse();
   }
@@ -1065,88 +1256,510 @@ class _$HabitsChooserFetchedStateImpl implements HabitsChooserFetchedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) {
-    return fetched(this);
+    return saved(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) {
-    return fetched?.call(this);
+    return saved?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) {
-    if (fetched != null) {
-      return fetched(this);
+    if (saved != null) {
+      return saved(this);
     }
     return orElse();
   }
 }
 
-abstract class HabitsChooserFetchedState implements HabitsChooserState {
-  const factory HabitsChooserFetchedState(final List<Habit> habits) =
-      _$HabitsChooserFetchedStateImpl;
+abstract class DashboardEntrySavedState implements DashboardState {
+  const factory DashboardEntrySavedState() = _$DashboardEntrySavedStateImpl;
+}
 
-  List<Habit> get habits;
+/// @nodoc
+abstract class _$$DashboardFetchedLocalStateImplCopyWith<$Res> {
+  factory _$$DashboardFetchedLocalStateImplCopyWith(
+          _$DashboardFetchedLocalStateImpl value,
+          $Res Function(_$DashboardFetchedLocalStateImpl) then) =
+      __$$DashboardFetchedLocalStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Habit> habits, List<HabitEntry> entries});
+}
 
-  /// Create a copy of HabitsChooserState
+/// @nodoc
+class __$$DashboardFetchedLocalStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardFetchedLocalStateImpl>
+    implements _$$DashboardFetchedLocalStateImplCopyWith<$Res> {
+  __$$DashboardFetchedLocalStateImplCopyWithImpl(
+      _$DashboardFetchedLocalStateImpl _value,
+      $Res Function(_$DashboardFetchedLocalStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? habits = null,
+    Object? entries = null,
+  }) {
+    return _then(_$DashboardFetchedLocalStateImpl(
+      null == habits
+          ? _value._habits
+          : habits // ignore: cast_nullable_to_non_nullable
+              as List<Habit>,
+      null == entries
+          ? _value._entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<HabitEntry>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DashboardFetchedLocalStateImpl implements DashboardFetchedLocalState {
+  const _$DashboardFetchedLocalStateImpl(
+      final List<Habit> habits, final List<HabitEntry> entries)
+      : _habits = habits,
+        _entries = entries;
+
+  final List<Habit> _habits;
+  @override
+  List<Habit> get habits {
+    if (_habits is EqualUnmodifiableListView) return _habits;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_habits);
+  }
+
+  final List<HabitEntry> _entries;
+  @override
+  List<HabitEntry> get entries {
+    if (_entries is EqualUnmodifiableListView) return _entries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_entries);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardState.fetchedLocal(habits: $habits, entries: $entries)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DashboardFetchedLocalStateImpl &&
+            const DeepCollectionEquality().equals(other._habits, _habits) &&
+            const DeepCollectionEquality().equals(other._entries, _entries));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_habits),
+      const DeepCollectionEquality().hash(_entries));
+
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HabitsChooserFetchedStateImplCopyWith<_$HabitsChooserFetchedStateImpl>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DashboardFetchedLocalStateImplCopyWith<_$DashboardFetchedLocalStateImpl>
+      get copyWith => __$$DashboardFetchedLocalStateImplCopyWithImpl<
+          _$DashboardFetchedLocalStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loaded,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
+    required TResult Function(String feedback) failure,
+  }) {
+    return fetchedLocal(habits, entries);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loaded,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
+    TResult? Function(String feedback)? failure,
+  }) {
+    return fetchedLocal?.call(habits, entries);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loaded,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
+    TResult Function(String feedback)? failure,
+    required TResult orElse(),
+  }) {
+    if (fetchedLocal != null) {
+      return fetchedLocal(habits, entries);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
+  }) {
+    return fetchedLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
+  }) {
+    return fetchedLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
+    required TResult orElse(),
+  }) {
+    if (fetchedLocal != null) {
+      return fetchedLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DashboardFetchedLocalState implements DashboardState {
+  const factory DashboardFetchedLocalState(
+          final List<Habit> habits, final List<HabitEntry> entries) =
+      _$DashboardFetchedLocalStateImpl;
+
+  List<Habit> get habits;
+  List<HabitEntry> get entries;
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DashboardFetchedLocalStateImplCopyWith<_$DashboardFetchedLocalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$HabitsChooserFailureStateImplCopyWith<$Res> {
-  factory _$$HabitsChooserFailureStateImplCopyWith(
-          _$HabitsChooserFailureStateImpl value,
-          $Res Function(_$HabitsChooserFailureStateImpl) then) =
-      __$$HabitsChooserFailureStateImplCopyWithImpl<$Res>;
+abstract class _$$DashboardFetchedOnlineStateImplCopyWith<$Res> {
+  factory _$$DashboardFetchedOnlineStateImplCopyWith(
+          _$DashboardFetchedOnlineStateImpl value,
+          $Res Function(_$DashboardFetchedOnlineStateImpl) then) =
+      __$$DashboardFetchedOnlineStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Habit> habits, List<HabitEntry> entries});
+}
+
+/// @nodoc
+class __$$DashboardFetchedOnlineStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res,
+        _$DashboardFetchedOnlineStateImpl>
+    implements _$$DashboardFetchedOnlineStateImplCopyWith<$Res> {
+  __$$DashboardFetchedOnlineStateImplCopyWithImpl(
+      _$DashboardFetchedOnlineStateImpl _value,
+      $Res Function(_$DashboardFetchedOnlineStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? habits = null,
+    Object? entries = null,
+  }) {
+    return _then(_$DashboardFetchedOnlineStateImpl(
+      null == habits
+          ? _value._habits
+          : habits // ignore: cast_nullable_to_non_nullable
+              as List<Habit>,
+      null == entries
+          ? _value._entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<HabitEntry>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DashboardFetchedOnlineStateImpl implements DashboardFetchedOnlineState {
+  const _$DashboardFetchedOnlineStateImpl(
+      final List<Habit> habits, final List<HabitEntry> entries)
+      : _habits = habits,
+        _entries = entries;
+
+  final List<Habit> _habits;
+  @override
+  List<Habit> get habits {
+    if (_habits is EqualUnmodifiableListView) return _habits;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_habits);
+  }
+
+  final List<HabitEntry> _entries;
+  @override
+  List<HabitEntry> get entries {
+    if (_entries is EqualUnmodifiableListView) return _entries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_entries);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardState.fetchedOnline(habits: $habits, entries: $entries)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DashboardFetchedOnlineStateImpl &&
+            const DeepCollectionEquality().equals(other._habits, _habits) &&
+            const DeepCollectionEquality().equals(other._entries, _entries));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_habits),
+      const DeepCollectionEquality().hash(_entries));
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DashboardFetchedOnlineStateImplCopyWith<_$DashboardFetchedOnlineStateImpl>
+      get copyWith => __$$DashboardFetchedOnlineStateImplCopyWithImpl<
+          _$DashboardFetchedOnlineStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loaded,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
+    required TResult Function(String feedback) failure,
+  }) {
+    return fetchedOnline(habits, entries);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loaded,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
+    TResult? Function(String feedback)? failure,
+  }) {
+    return fetchedOnline?.call(habits, entries);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loaded,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
+    TResult Function(String feedback)? failure,
+    required TResult orElse(),
+  }) {
+    if (fetchedOnline != null) {
+      return fetchedOnline(habits, entries);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
+  }) {
+    return fetchedOnline(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
+  }) {
+    return fetchedOnline?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
+    required TResult orElse(),
+  }) {
+    if (fetchedOnline != null) {
+      return fetchedOnline(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DashboardFetchedOnlineState implements DashboardState {
+  const factory DashboardFetchedOnlineState(
+          final List<Habit> habits, final List<HabitEntry> entries) =
+      _$DashboardFetchedOnlineStateImpl;
+
+  List<Habit> get habits;
+  List<HabitEntry> get entries;
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DashboardFetchedOnlineStateImplCopyWith<_$DashboardFetchedOnlineStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DashboardFailureStateImplCopyWith<$Res> {
+  factory _$$DashboardFailureStateImplCopyWith(
+          _$DashboardFailureStateImpl value,
+          $Res Function(_$DashboardFailureStateImpl) then) =
+      __$$DashboardFailureStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String feedback});
 }
 
 /// @nodoc
-class __$$HabitsChooserFailureStateImplCopyWithImpl<$Res>
-    extends _$HabitsChooserStateCopyWithImpl<$Res,
-        _$HabitsChooserFailureStateImpl>
-    implements _$$HabitsChooserFailureStateImplCopyWith<$Res> {
-  __$$HabitsChooserFailureStateImplCopyWithImpl(
-      _$HabitsChooserFailureStateImpl _value,
-      $Res Function(_$HabitsChooserFailureStateImpl) _then)
+class __$$DashboardFailureStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardFailureStateImpl>
+    implements _$$DashboardFailureStateImplCopyWith<$Res> {
+  __$$DashboardFailureStateImplCopyWithImpl(_$DashboardFailureStateImpl _value,
+      $Res Function(_$DashboardFailureStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? feedback = null,
   }) {
-    return _then(_$HabitsChooserFailureStateImpl(
+    return _then(_$DashboardFailureStateImpl(
       null == feedback
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
@@ -1157,22 +1770,22 @@ class __$$HabitsChooserFailureStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
-  const _$HabitsChooserFailureStateImpl(this.feedback);
+class _$DashboardFailureStateImpl implements DashboardFailureState {
+  const _$DashboardFailureStateImpl(this.feedback);
 
   @override
   final String feedback;
 
   @override
   String toString() {
-    return 'HabitsChooserState.failure(feedback: $feedback)';
+    return 'DashboardState.failure(feedback: $feedback)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HabitsChooserFailureStateImpl &&
+            other is _$DashboardFailureStateImpl &&
             (identical(other.feedback, feedback) ||
                 other.feedback == feedback));
   }
@@ -1180,14 +1793,14 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   @override
   int get hashCode => Object.hash(runtimeType, feedback);
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HabitsChooserFailureStateImplCopyWith<_$HabitsChooserFailureStateImpl>
-      get copyWith => __$$HabitsChooserFailureStateImplCopyWithImpl<
-          _$HabitsChooserFailureStateImpl>(this, _$identity);
+  _$$DashboardFailureStateImplCopyWith<_$DashboardFailureStateImpl>
+      get copyWith => __$$DashboardFailureStateImplCopyWithImpl<
+          _$DashboardFailureStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1196,7 +1809,11 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
     required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<Habit> habits) fetched,
+    required TResult Function() saved,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedLocal,
+    required TResult Function(List<Habit> habits, List<HabitEntry> entries)
+        fetchedOnline,
     required TResult Function(String feedback) failure,
   }) {
     return failure(feedback);
@@ -1209,7 +1826,11 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
     TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<Habit> habits)? fetched,
+    TResult? Function()? saved,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult? Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult? Function(String feedback)? failure,
   }) {
     return failure?.call(feedback);
@@ -1222,7 +1843,11 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
     TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<Habit> habits)? fetched,
+    TResult Function()? saved,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedLocal,
+    TResult Function(List<Habit> habits, List<HabitEntry> entries)?
+        fetchedOnline,
     TResult Function(String feedback)? failure,
     required TResult orElse(),
   }) {
@@ -1235,12 +1860,14 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HabitsChooserState value) initial,
-    required TResult Function(HabitsChooserLoadedState value) loaded,
-    required TResult Function(HabitsChooserLoadingState value) loading,
-    required TResult Function(HabitsChooserSuccessState value) success,
-    required TResult Function(HabitsChooserFetchedState value) fetched,
-    required TResult Function(HabitsChooserFailureState value) failure,
+    required TResult Function(_DashboardState value) initial,
+    required TResult Function(DashboardLoadedState value) loaded,
+    required TResult Function(DashboardLoadingState value) loading,
+    required TResult Function(DashboardSuccessState value) success,
+    required TResult Function(DashboardEntrySavedState value) saved,
+    required TResult Function(DashboardFetchedLocalState value) fetchedLocal,
+    required TResult Function(DashboardFetchedOnlineState value) fetchedOnline,
+    required TResult Function(DashboardFailureState value) failure,
   }) {
     return failure(this);
   }
@@ -1248,12 +1875,14 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_HabitsChooserState value)? initial,
-    TResult? Function(HabitsChooserLoadedState value)? loaded,
-    TResult? Function(HabitsChooserLoadingState value)? loading,
-    TResult? Function(HabitsChooserSuccessState value)? success,
-    TResult? Function(HabitsChooserFetchedState value)? fetched,
-    TResult? Function(HabitsChooserFailureState value)? failure,
+    TResult? Function(_DashboardState value)? initial,
+    TResult? Function(DashboardLoadedState value)? loaded,
+    TResult? Function(DashboardLoadingState value)? loading,
+    TResult? Function(DashboardSuccessState value)? success,
+    TResult? Function(DashboardEntrySavedState value)? saved,
+    TResult? Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult? Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult? Function(DashboardFailureState value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -1261,12 +1890,14 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HabitsChooserState value)? initial,
-    TResult Function(HabitsChooserLoadedState value)? loaded,
-    TResult Function(HabitsChooserLoadingState value)? loading,
-    TResult Function(HabitsChooserSuccessState value)? success,
-    TResult Function(HabitsChooserFetchedState value)? fetched,
-    TResult Function(HabitsChooserFailureState value)? failure,
+    TResult Function(_DashboardState value)? initial,
+    TResult Function(DashboardLoadedState value)? loaded,
+    TResult Function(DashboardLoadingState value)? loading,
+    TResult Function(DashboardSuccessState value)? success,
+    TResult Function(DashboardEntrySavedState value)? saved,
+    TResult Function(DashboardFetchedLocalState value)? fetchedLocal,
+    TResult Function(DashboardFetchedOnlineState value)? fetchedOnline,
+    TResult Function(DashboardFailureState value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1276,15 +1907,15 @@ class _$HabitsChooserFailureStateImpl implements HabitsChooserFailureState {
   }
 }
 
-abstract class HabitsChooserFailureState implements HabitsChooserState {
-  const factory HabitsChooserFailureState(final String feedback) =
-      _$HabitsChooserFailureStateImpl;
+abstract class DashboardFailureState implements DashboardState {
+  const factory DashboardFailureState(final String feedback) =
+      _$DashboardFailureStateImpl;
 
   String get feedback;
 
-  /// Create a copy of HabitsChooserState
+  /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HabitsChooserFailureStateImplCopyWith<_$HabitsChooserFailureStateImpl>
+  _$$DashboardFailureStateImplCopyWith<_$DashboardFailureStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

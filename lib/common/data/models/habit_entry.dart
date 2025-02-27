@@ -14,6 +14,9 @@ class HabitEntry {
   int? habit;
   double? hours;
   String? doneAt;
+  String? title;
+  String? description;
+  String? photos;
   String? createdAt;
 
   HabitEntry({
@@ -21,6 +24,9 @@ class HabitEntry {
     this.habit,
     this.hours,
     this.doneAt,
+    this.title,
+    this.description,
+    this.photos,
     this.createdAt,
   });
 

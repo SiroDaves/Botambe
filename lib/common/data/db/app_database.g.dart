@@ -100,7 +100,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `habits` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `rid` INTEGER, `title` TEXT, `isMandatory` INTEGER NOT NULL, `isWeekday` INTEGER NOT NULL, `hours` REAL NOT NULL, `createdAt` TEXT NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `entries` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `rid` INTEGER, `habit` INTEGER, `hours` REAL, `doneAt` TEXT, `createdAt` TEXT)');
+            'CREATE TABLE IF NOT EXISTS `entries` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `rid` INTEGER, `habit` INTEGER, `hours` REAL, `doneAt` TEXT, `title` TEXT, `description` TEXT, `photos` TEXT, `createdAt` TEXT)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -217,6 +217,9 @@ class _$HabitEntriesDao extends HabitEntriesDao {
                   'habit': item.habit,
                   'hours': item.hours,
                   'doneAt': item.doneAt,
+                  'title': item.title,
+                  'description': item.description,
+                  'photos': item.photos,
                   'createdAt': item.createdAt
                 }),
         _habitEntryDeletionAdapter = DeletionAdapter(
@@ -229,6 +232,9 @@ class _$HabitEntriesDao extends HabitEntriesDao {
                   'habit': item.habit,
                   'hours': item.hours,
                   'doneAt': item.doneAt,
+                  'title': item.title,
+                  'description': item.description,
+                  'photos': item.photos,
                   'createdAt': item.createdAt
                 });
 
@@ -250,6 +256,9 @@ class _$HabitEntriesDao extends HabitEntriesDao {
             habit: row['habit'] as int?,
             hours: row['hours'] as double?,
             doneAt: row['doneAt'] as String?,
+            title: row['title'] as String?,
+            description: row['description'] as String?,
+            photos: row['photos'] as String?,
             createdAt: row['createdAt'] as String?),
         arguments: [id]);
   }
@@ -262,6 +271,9 @@ class _$HabitEntriesDao extends HabitEntriesDao {
             habit: row['habit'] as int?,
             hours: row['hours'] as double?,
             doneAt: row['doneAt'] as String?,
+            title: row['title'] as String?,
+            description: row['description'] as String?,
+            photos: row['photos'] as String?,
             createdAt: row['createdAt'] as String?));
   }
 

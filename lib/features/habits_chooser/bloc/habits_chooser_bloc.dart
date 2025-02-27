@@ -31,7 +31,7 @@ class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
     emit(const HabitsChooserLoadingState());
 
     habits = await _habitsRepo.fetchHabits();
-    
+
     if (habits.isNotEmpty) {
       emit(HabitsChooserFetchedState(habits));
     } else {
@@ -47,7 +47,7 @@ class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
 
     await _dbRepo.removeAllHabits();
     for (final habit in event.habits) {
-      await _dbRepo.saveHabit(habit);
+      await _dbRepo.saveHabit(habit: habit);
     }
 
     await Future<void>.delayed(const Duration(seconds: 10));

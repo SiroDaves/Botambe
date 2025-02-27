@@ -67,11 +67,6 @@ class SignupScreenState extends State<SignupScreen> {
       child: BlocConsumer<UserAuthBloc, UserAuthState>(
         listener: (context, state) {
           if (state is UserAuthSignupSuccessState) {
-            CustomSnackbar.show(
-              context,
-              l10n.signupSuccess,
-              isSuccess: true,
-            );
             nextStep();
           } else if (state is UserAuthFailureState) {
             CustomSnackbar.show(context, state.feedback);

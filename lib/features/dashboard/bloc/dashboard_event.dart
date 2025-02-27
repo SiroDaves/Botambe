@@ -1,10 +1,10 @@
 part of 'dashboard_bloc.dart';
 
 @freezed
-sealed class HabitsChooserEvent with _$HabitsChooserEvent {
-  const factory HabitsChooserEvent.fetch() = FetchData;
+sealed class DashboardEvent with _$DashboardEvent {
+  const factory DashboardEvent.fetchlocal() = DashboardFetchLocalData;
 
-  const factory HabitsChooserEvent.save(
-    List<Habit> habits,
-  ) = SaveData;
+  const factory DashboardEvent.fetchOnline() = DashboardFetchOnlineData;
+
+  const factory DashboardEvent.save(HabitEntry entry) = DashboardSaveEntry;
 }

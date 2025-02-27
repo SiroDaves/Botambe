@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+part of '../home_screen.dart';
 
-class DateSelector extends StatelessWidget {
-  const DateSelector({super.key});
+class DateSelectors extends StatelessWidget {
+  const DateSelectors({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class HabitCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.2),
+        color: color.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
