@@ -37,14 +37,16 @@ class DateSelectorState extends State<DateSelector> {
               width: 60,
               margin: const EdgeInsets.symmetric(horizontal: 6),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.orange : Colors.white,
+                color: isSelected
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.green,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                    color: isSelected ? Colors.orange : Colors.grey.shade300),
+                    color: isSelected ? Colors.green : Colors.grey.shade300),
                 boxShadow: isSelected
                     ? [
                         BoxShadow(
-                            color: Colors.orange.withValues(alpha: 0.3),
+                            color: Colors.green.withValues(alpha: 0.3),
                             blurRadius: 8,
                             spreadRadius: 1)
                       ]

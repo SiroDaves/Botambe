@@ -40,34 +40,72 @@ class DateSelectors extends StatelessWidget {
 
 class HabitCard extends StatelessWidget {
   final String title;
-  final String subtitle;
-  final IconData icon;
+  final double doneHours;
+  final double targetHours;
   final Color color;
 
   const HabitCard({
     super.key,
     required this.title,
-    required this.subtitle,
-    required this.icon,
+    required this.doneHours,
+    required this.targetHours,
     required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
+    double progress = (doneHours / targetHours).clamp(0.0, 1.0);
+
     return Container(
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(12),
+        color: color,
+        borderRadius: BorderRadius.circular(15),
       ),
+      padding: const EdgeInsets.all(12),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 32, color: color),
-          const SizedBox(height: 10),
-          Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+          [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ).expanded(),
+            Icon(Icons.check, color: Colors.white, size: 24),
+          ].toRow(),
+          const Spacer(),
+          CircularPercentIndicator(
+            radius: 60,
+            lineWidth: 10,
+            percent: progress,
+            backgroundColor: Colors.white.withValues(alpha: .3),
+            progressColor: Colors.white,
+            circularStrokeCap: CircularStrokeCap.round,
+            center: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                 doneHours.toStringAsFixed(0),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "hrs",
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.8),
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 5),
-          Text(subtitle, style: const TextStyle(color: Colors.black54)),
         ],
       ),
     );

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:styled_widget/styled_widget.dart';
 
+import '../../common/data/models/models.dart';
+import '../../common/widget/progress/general_progress.dart';
+import '../../core/navigator/route_names.dart';
 import '../dashboard/ui/dashboard_screen.dart';
 import '../profile/profile_screen.dart';
 
 part 'widgets/date_selector.dart';
 part 'widgets/habit_card.dart';
+part 'widgets/habit_grid.dart';
 
 class HomeScreen extends StatefulWidget {
   final DashboardScreenState parent;
@@ -105,26 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 10),
-            Expanded(
-              child: habits.isEmpty
-                  ? const Center(child: Text("No habits for today!"))
-                  : GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1,
-                      children: habits
-                          .map(
-                            (habit) => HabitCard(
-                              title: habit.title ?? "Unknown",
-                              subtitle:
-                                  "${habit.hours.toStringAsFixed(0)} hours",
-                              icon: Icons.check,
-                              color: Colors.blueAccent,
-                            ),
-                          )
-                          .toList(),
-                    ),
+            HabitGrid(
+              habits: habits,
+              entries: widget.parent.entries,
+              selectedDate: parent.selectedDate,
             ),
           ],
         ),

@@ -27,6 +27,7 @@ dependencies:
   loading_indicator: ^3.1.1 # Collection of customizable loading animations
   path: ^1.9.0 # Utilities for handling file system paths
   path_provider: ^2.1.5 # Access to commonly used locations on the filesystem
+  percent_indicator: ^4.2.4
   shared_preferences: ^2.3.3 # Local key-value storage for simple data persistence
   sqflite: ^2.4.1 # SQLite plugin for Flutter
   styled_widget: ^0.4.1 # Functional and declarative UI styling for Flutter

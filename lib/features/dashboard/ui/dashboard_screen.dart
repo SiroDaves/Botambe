@@ -10,6 +10,7 @@ import '../../../common/data/models/models.dart';
 import '../../../common/repository/prefs_repository.dart';
 import '../../../common/utils/app_util.dart';
 import '../../../common/widget/progress/custom_snackbar.dart';
+import '../../../common/widget/progress/general_progress.dart';
 import '../../../core/di/injectable.dart';
 import '../../../core/navigator/route_names.dart';
 import '../../entries/ui/habit_entry_screen.dart';
@@ -125,8 +126,7 @@ class DashboardScreenState extends State<DashboardScreen> {
             ProfileScreen(parent: this),
             const SizedBox(),
           ];
-
-          return Scaffold(
+          var bodyWidget = Scaffold(
             body: screens[selectedIndex],
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.pinkAccent,
@@ -151,6 +151,20 @@ class DashboardScreenState extends State<DashboardScreen> {
               onItemSelected: onItemTapped,
               selectedIndex: selectedIndex,
             ),
+          );
+          return state.maybeWhen(
+            orElse: () => const Scaffold(body: SizedBox()),
+            failure: (feedback) => Scaffold(
+              body: EmptyState(
+                title: l10n.habitChooserFailure,
+                showRetry: true,
+                onRetry: () => _bloc.add(const DashboardFetchLocalData()),
+              ),
+            ),
+            loading: () =>
+                Scaffold(body: LoadingProgress(title: l10n.savingHabits)),
+            fetchedLocal: (habits, entries) => bodyWidget,
+            fetchedOnline: (habits, entries) => bodyWidget,
           );
         },
       ),
