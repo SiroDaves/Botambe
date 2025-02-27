@@ -1,15 +1,28 @@
 # Botambe
 
-A new Flutter project
+a Gamified Habit Tracker App in Flutter
+
+## Plugins Used
+1. Supabase for backend and auth
+2. Floor for local storage
+3. Flutter Bloc for state management
 
 ## Screenshots
 <table>
-<tr>
-<td><img src="screenshots/image1.png" width="200px" /></td>
-<td><img src="screenshots/image2.png" width="200px" /></td>
-<td><img src="screenshots/image3.png" width="200px" /></td>
-<td><img src="screenshots/image4.png" width="200px" /></td>
-</tr>
+    <tr>
+        <td><img src="screenshots/image1.jpg" width="200px" /></td>
+        <td><img src="screenshots/image3.jpg" width="200px" /></td>
+        <td><img src="screenshots/image5.jpg" width="200px" /></td>
+        <td><img src="screenshots/image4.jpg" width="200px" /></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td><img src="screenshots/image7.jpg" width="200px" /></td>
+        <td><img src="screenshots/image8.jpg" width="200px" /></td>
+        <td><img src="screenshots/image9.jpg" width="200px" /></td>
+        <td><img src="screenshots/image6.jpg" width="200px" /></td>
+    </tr>
 </table>
 
 ## Getting Started

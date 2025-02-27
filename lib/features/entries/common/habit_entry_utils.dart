@@ -8,6 +8,7 @@ HabitEntry newEntry(HabitEntryScreenState parent) {
     habit: parent.habit!.rid!,
     hours: double.parse(parent.hours),
     doneAt: timestamp,
+    createdAt: timestamp,
     title: parent.titleController!.text.isEmpty
         ? parent.titleController!.text
         : parent.activityTitle,

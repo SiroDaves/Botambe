@@ -15,14 +15,6 @@ class DatabaseRepositoryImpl implements DatabaseRepository {
 
   @override
   Future<void> saveHabitEntry({required HabitEntry entry}) async {
-    String timestamp = "${DateTime.now().toUtc().toIso8601String()}+00:00";
-
-    if (entry.doneAt!.isEmpty) {
-      entry.doneAt = timestamp;
-    }
-    if (entry.createdAt!.isEmpty) {
-      entry.createdAt = timestamp;
-    }
     return _appDB.entriesDao.insertHabitEntry(entry);
   }
 

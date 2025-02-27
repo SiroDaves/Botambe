@@ -85,7 +85,7 @@ class HabitsChooserScreenState extends State<HabitsChooserScreen> {
                 showRetry: true,
                 onRetry: () => bloc.add(const FetchData()),
               ),
-              loading: () => LoadingProgress(title: l10n.savingHabits),
+              loading: () => LoadingProgress(title: l10n.processingData),
               fetched: (habits) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
