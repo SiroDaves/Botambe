@@ -77,26 +77,70 @@ Follow this guide to set up and run the Botambe:
 
 Congratulations! You've successfully set up and run or built the Botambe. Explore the codebase, make modifications, and contribute to creating a seamless experience on the app. Happy coding!
 
-### Deploying on Firebase
-   ```bash
-   # Install FlutterFire CLI
-   dart pub global activate flutterfire_cli
+### Deploying Flutter Web App to Vercel
+**Prerequisites**
 
-   # Install Firebase CLI
-   npm install -g firebase-tools
+- Flutter SDK installed and configured
+- Vercel account
+- Node.js and npm installed
 
-   # Login to Firebase
-   firebase login
+Ensure your Flutter project supports and runs on the web.
 
-   # Configure Firebase for your Flutter app
-   flutterfire configure --project=your-project-id
+1. **Set Up Vercel**
 
-   # This will:
-   # - Create a new Firebase project (or select existing)
-   # - Add Android & iOS & Web apps
-   # - Download and add config files automatically
-   # - Generate firebase_options.dart
-   ```
+Install the Vercel CLI
+
+```bash
+npm i -g vercel
+```
+
+Then, log in to your Vercel account
+```bash
+vercel login
+```
+
+2. **Configure Vercel Deployment**
+
+Create a `vercel.json` file in your project root:
+
+```json
+{
+  "version": 2,
+  "routes": [
+    {"handle": "filesystem"},
+    {"src": "/(.*)", "dest": "/index.html"}
+  ]
+}
+```
+
+3. **Build Your Flutter Web App**
+```bash
+flutter build web --dart-define-from-file keys-prod.json --no-tree-shake-icons
+```
+
+4. **Deploy to Vercel**
+
+Navigate to your build/web directory
+```bash
+cd build/web
+```
+
+Finally deploy the app by running:
+```bash
+vercel --prod
+```
+When prompted to configure your project, follow these steps:
+
+a. When asked "Which settings would you like to overwrite", select:
+   - Build Command
+   - Output Directory
+
+b. For the settings:
+   - **Build Command**: Leave empty (since you've already built your app)
+   - **Output Directory**: Enter `.` (current directory)
+
+These settings tell Vercel that you're deploying pre-built files from the current directory without needing additional build steps.
+
 
 ## CI/CD Pipeline
 
