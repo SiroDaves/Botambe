@@ -11,7 +11,7 @@ class DateSelector extends StatefulWidget {
 
 class DateSelectorState extends State<DateSelector> {
   final List<DateTime> days =
-      List.generate(7, (index) => DateTime.now().add(Duration(days: index)));
+      List.generate(21, (index) => DateTime.now().add(Duration(days: index)));
 
   int selectedIndex = 0;
 

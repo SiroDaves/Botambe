@@ -15,7 +15,7 @@ class PageBreaks {
   static double get minWidth => 300;
 
   static double get mobileWidth => 450;
-  
+
   static double get maxWidth => 800;
 
   static double get largePhone => 550;
@@ -31,16 +31,21 @@ class PageBreaks {
   static double get desktop => 1440;
 
   static int gridColumns(double width) {
-    if (width > desktop){
+    if (width > desktop) {
+      return 6;
+    } else if (width > bigScreen) {
+      return 5;
+    } else if (width > tabletLandscape) {
       return 4;
-    } else if (width > bigScreen){
+    } else if (width > tabletPortrait) {
       return 3;
     } else {
       return 2;
     }
   }
+
   static int gridColumnsBig(double width) {
-    if (width > bigScreen){
+    if (width > bigScreen) {
       return 3;
     } else {
       return 2;

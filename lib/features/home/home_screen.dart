@@ -6,6 +6,7 @@ import 'package:styled_widget/styled_widget.dart';
 import '../../common/data/models/models.dart';
 import '../../common/widget/progress/general_progress.dart';
 import '../../core/navigator/route_names.dart';
+import '../../core/theme/theme_styles.dart';
 import '../dashboard/ui/dashboard_screen.dart';
 import '../profile/profile_screen.dart';
 

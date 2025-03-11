@@ -14,6 +14,7 @@ import '../../../../../core/di/injectable.dart';
 import '../../../../../core/theme/theme_colors.dart';
 import '../../../common/data/models/models.dart';
 import '../../../common/widget/inputs/app_dropdown.dart';
+import '../../../common/widget/responsive_layout.dart';
 import '../../dashboard/bloc/dashboard_bloc.dart';
 import '../common/habit_entry_utils.dart';
 
@@ -79,7 +80,7 @@ class HabitEntryScreenState extends State<HabitEntryScreen> {
       child: BlocConsumer<DashboardBloc, DashboardState>(
         listener: (context, state) {
           if (state is DashboardEntrySavedState) {
-             context.read<DashboardBloc>().add(DashboardFetchLocalData());
+            context.read<DashboardBloc>().add(DashboardFetchLocalData());
             Navigator.pop(context, true);
           } else if (state is DashboardFailureState) {
             CustomSnackbar.show(context, state.feedback);
@@ -90,7 +91,10 @@ class HabitEntryScreenState extends State<HabitEntryScreen> {
             appBar: AppBar(title: Text(l10n.addNewHabit)),
             body: state.maybeWhen(
               loading: () => LoadingProgress(title: l10n.processingData),
-              orElse: () => HabitEntryForm(parent: this),
+              orElse: () => ResponsiveLayout(
+                showMobileView: true,
+                child: HabitEntryForm(parent: this),
+              ),
             ),
           );
         },

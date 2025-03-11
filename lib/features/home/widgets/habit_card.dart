@@ -43,6 +43,7 @@ class HabitCard extends StatelessWidget {
   final double doneHours;
   final double targetHours;
   final Color color;
+  final double width;
 
   const HabitCard({
     super.key,
@@ -50,6 +51,7 @@ class HabitCard extends StatelessWidget {
     required this.doneHours,
     required this.targetHours,
     required this.color,
+    required this.width,
   });
 
   @override
@@ -68,17 +70,17 @@ class HabitCard extends StatelessWidget {
           [
             Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
-                fontSize: 18,
+                fontSize: width / 5,
                 fontWeight: FontWeight.bold,
               ),
             ).expanded(),
-            Icon(Icons.check, color: Colors.white, size: 24),
+            Icon(Icons.check, color: Colors.white, size: width / 4),
           ].toRow(),
-          const Spacer(),
+          SizedBox(height: 20),
           CircularPercentIndicator(
-            radius: 60,
+            radius: width / 1.5,
             lineWidth: 10,
             percent: progress,
             backgroundColor: Colors.white.withValues(alpha: .3),
@@ -88,10 +90,10 @@ class HabitCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                 doneHours.toStringAsFixed(0),
-                  style: const TextStyle(
+                  doneHours.toStringAsFixed(0),
+                  style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: width / 2,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -99,13 +101,13 @@ class HabitCard extends StatelessWidget {
                   "hrs",
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.8),
-                    fontSize: 16,
+                    fontSize: width / 4,
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 5),
+          const Spacer(),
         ],
       ),
     );

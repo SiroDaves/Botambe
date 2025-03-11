@@ -31,7 +31,7 @@ class ResponsiveLayout extends StatelessWidget {
           if (isMobileScreen) {
             contentWidth = constraints.maxWidth;
           } else {
-            contentWidth = PageBreaks.largePhone;
+            contentWidth = PageBreaks.bigScreen;
           }
         }
 
