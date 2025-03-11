@@ -67,13 +67,13 @@ Follow this guide to set up and run the Botambe:
 - **Android build:**
 
     ```bash
-    flutter build apk --no-tree-shake-icons
+    flutter build apk --release --no-tree-shake-icons
     ```
 
 - **iOS Build:**
 
     ```bash
-    flutter build ios -t lib/main.dart --no-tree-shake-icons --build-name
+    flutter build ios --release --no-tree-shake-icons --build-name
     ```
 
 Congratulations! You've successfully set up and run or built the Botambe. Explore the codebase, make modifications, and contribute to creating a seamless experience on the app. Happy coding!
@@ -96,6 +96,7 @@ npm i -g vercel
 ```
 
 Then, log in to your Vercel account
+
 ```bash
 vercel login
 ```
@@ -116,7 +117,7 @@ Create a `vercel.json` file in your project root:
 
 3. **Build Your Flutter Web App**
 ```bash
-flutter build web --no-tree-shake-icons
+flutter build web --release --no-tree-shake-icons
 ```
 
 4. **Deploy to Vercel**

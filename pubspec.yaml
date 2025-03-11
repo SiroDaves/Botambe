@@ -1,7 +1,7 @@
 name: botambe
 description: "A new Flutter project for a gamified habit tracker."
 publish_to: 'none'
-version: 1.0.2
+version: 1.0.0+3
 
 environment:
   sdk: ^3.6.0
