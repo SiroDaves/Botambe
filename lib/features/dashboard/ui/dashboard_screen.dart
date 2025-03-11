@@ -82,9 +82,11 @@ class DashboardScreenState extends State<DashboardScreen> {
       create: (context) {
         final bloc = DashboardBloc();
         isConnectedToInternet().then((isConnected) {
-          bloc.add(isConnected
-              ? DashboardFetchOnlineData()
-              : DashboardFetchLocalData());
+          bloc.add(
+            isConnected
+                ? DashboardFetchOnlineData()
+                : DashboardFetchLocalData(),
+          );
         });
         return bloc;
       },

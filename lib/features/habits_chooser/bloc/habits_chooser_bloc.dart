@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,7 +22,6 @@ class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
 
   final _habitsRepo = HabitsChooserRepository();
   final _prefsRepo = getIt<PrefsRepository>();
-  final _dbRepo = getIt<DatabaseRepository>();
 
   void _onFetchData(
     FetchData event,
@@ -45,9 +45,15 @@ class HabitsChooserBloc extends Bloc<HabitsChooserEvent, HabitsChooserState> {
   ) async {
     emit(const HabitsChooserLoadingState());
 
-    await _dbRepo.removeAllHabits();
-    for (final habit in event.habits) {
-      await _dbRepo.saveHabit(habit: habit);
+    if (kIsWeb) {
+      _prefsRepo.habits!.clear();
+      _prefsRepo.habits = event.habits;
+    } else {
+      final dbRepo = getIt<DatabaseRepository>();
+      await dbRepo.removeAllHabits();
+      for (final habit in event.habits) {
+        await dbRepo.saveHabit(habit: habit);
+      }
     }
 
     await Future<void>.delayed(const Duration(seconds: 10));

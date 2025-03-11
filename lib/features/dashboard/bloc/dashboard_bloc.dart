@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -22,7 +23,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   final _dashboardRepo = DashboardRepository();
   final _prefsRepo = getIt<PrefsRepository>();
-  final _dbRepo = getIt<DatabaseRepository>();
 
   void _onFetchLocalData(
     DashboardFetchLocalData event,
@@ -32,9 +32,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     List<HabitEntry> entries = [];
     emit(const DashboardLoadingState());
 
-    habits = await _dbRepo.fetchHabits();
-    entries = await _dbRepo.fetchHabitEntries();
-
+    if (kIsWeb) {
+      habits = _prefsRepo.habits!;
+    } else {
+      final dbRepo = getIt<DatabaseRepository>();
+      habits = await dbRepo.fetchHabits();
+      entries = await dbRepo.fetchHabitEntries();
+    }
     emit(DashboardFetchedLocalState(habits, entries));
   }
 
@@ -45,16 +49,21 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     List<Habit> habits = [];
     List<HabitEntry> entries = [];
     emit(const DashboardLoadingState());
-
-    habits = await _dbRepo.fetchHabits();
     entries = await _dashboardRepo.fetchHabitEntries();
-    if (entries.isNotEmpty) {
-      _dbRepo.removeAllHabitEntries();
-      for (final item in entries) {
-        _dbRepo.saveHabitEntry(entry: item);
-      }
+
+    if (kIsWeb) {
+      habits = _prefsRepo.habits!;
     } else {
-      entries = await _dbRepo.fetchHabitEntries();
+      final dbRepo = getIt<DatabaseRepository>();
+      habits = await dbRepo.fetchHabits();
+      if (entries.isNotEmpty) {
+        dbRepo.removeAllHabitEntries();
+        for (final item in entries) {
+          dbRepo.saveHabitEntry(entry: item);
+        }
+      } else {
+        entries = await dbRepo.fetchHabitEntries();
+      }
     }
     emit(DashboardFetchedOnlineState(habits, entries));
   }
@@ -65,7 +74,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ) async {
     emit(const DashboardLoadingState());
 
-    await _dbRepo.saveHabitEntry(entry: event.entry);
+    if (!kIsWeb) {
+      final dbRepo = getIt<DatabaseRepository>();
+      await dbRepo.saveHabitEntry(entry: event.entry);
+    }
     await _dashboardRepo.saveHabitEntry(entry: event.entry);
 
     await Future<void>.delayed(const Duration(seconds: 10));

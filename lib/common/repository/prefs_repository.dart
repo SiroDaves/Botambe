@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/models/models.dart';
 import '../utils/constants/pref_constants.dart';
 
 @singleton
 abstract class PrefsRepository {
   @factoryMethod
-  factory PrefsRepository(SharedPreferences prefsRepository) = PrefsRepositoryImp;
+  factory PrefsRepository(SharedPreferences prefsRepository) =
+      PrefsRepositoryImp;
 
   ThemeMode getThemeMode();
 
   Future<void> updateThemeMode(ThemeMode themeMode);
+  
+  List<Habit>? habits = [];
+  List<HabitEntry>? entries = [];
 
   bool getPrefBool(String settingsKey);
   int getPrefInt(String settingsKey);
@@ -110,4 +115,10 @@ class PrefsRepositoryImp implements PrefsRepository {
     }
     sharedPrefs.setString(settingsKey, settingsValue);
   }
+
+  @override
+  List<Habit>? habits = [];
+
+  @override
+  List<HabitEntry>? entries = [];
 }

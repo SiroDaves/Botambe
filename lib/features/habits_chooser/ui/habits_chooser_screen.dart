@@ -8,8 +8,10 @@ import '../../../common/data/models/habit.dart';
 import '../../../common/widget/action/base_buttons.dart';
 import '../../../common/widget/progress/custom_snackbar.dart';
 import '../../../common/widget/progress/general_progress.dart';
+import '../../../common/widget/responsive_layout.dart';
 import '../../../core/navigator/route_names.dart';
 import '../../../core/theme/theme_colors.dart';
+import '../../../core/theme/theme_styles.dart';
 import '../bloc/habits_chooser_bloc.dart';
 
 part 'widgets/habit_card.dart';
@@ -74,7 +76,18 @@ class HabitsChooserScreenState extends State<HabitsChooserScreen> {
           }
         },
         builder: (context, state) {
+          double width = MediaQuery.sizeOf(context).width;
           var bloc = context.read<HabitsChooserBloc>();
+          bool isLargeScreen = width > PageBreaks.standardBreakPt;
+          bool isMobileScreen = width < PageBreaks.mobileWidth;
+          double viewport = 0.8;
+          if (isLargeScreen) {
+            if (isMobileScreen) {
+              viewport = 0.8;
+            } else {
+              viewport = 0.5;
+            }
+          }
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(title: Text(l10n.chooseHabits)),
@@ -111,25 +124,28 @@ class HabitsChooserScreenState extends State<HabitsChooserScreen> {
                           );
                         },
                         itemCount: 2,
-                        viewportFraction: 0.8,
+                        viewportFraction: viewport,
                         scale: 0.9,
                         pagination: const SwiperPagination(
                           alignment: Alignment.bottomCenter,
                         ),
                       ),
                     ),
-                    [
-                      AppButton(
-                        key: const Key('choose_habit_proceed_button'),
-                        onPressed: () {
-                          bloc.add(HabitsChooserEvent.save(selectedHabits));
-                        },
-                        label: l10n.getStarted,
-                        bgColor: ThemeColors.primary,
-                        foreColor: Colors.white,
-                        hoverColor: Colors.red,
-                      ).expanded()
-                    ].toRow(),
+                    ResponsiveLayout(
+                      showMobileView: true,
+                      child: [
+                        AppButton(
+                          key: const Key('choose_habit_proceed_button'),
+                          onPressed: () {
+                            bloc.add(HabitsChooserEvent.save(selectedHabits));
+                          },
+                          label: l10n.getStarted,
+                          bgColor: ThemeColors.primary,
+                          foreColor: Colors.white,
+                          hoverColor: Colors.red,
+                        ).expanded()
+                      ].toRow(),
+                    ),
                     const SizedBox(height: 5),
                   ],
                 ),
