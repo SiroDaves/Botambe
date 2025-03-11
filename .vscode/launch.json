@@ -11,9 +11,7 @@
             "args": [
                 "develop",
                 "--target",
-                "lib/main.dart",
-                "--dart-define-from-file",
-                "keys-prod.json"
+                "lib/main.dart"
             ],
         },
     ]

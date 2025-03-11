@@ -1,7 +1,7 @@
 name: botambe
 description: "A new Flutter project for a gamified habit tracker."
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.2
 
 environment:
   sdk: ^3.6.0
@@ -17,6 +17,7 @@ dependencies:
   flutter:
     sdk: flutter # Core Flutter SDK
   flutter_bloc: ^8.1.6 # State management using the BLoC pattern
+  flutter_dotenv: ^5.2.1 #Load configuration at runtime from a .env file which can be used throughout the application.
   flutter_localizations:
     sdk: flutter # Flutter internationalization support
   freezed_annotation: ^2.4.4 # Annotations for code generation with Freezed

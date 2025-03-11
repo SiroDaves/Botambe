@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supa;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,11 +18,11 @@ import 'core/theme/bloc/theme_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  final supabaseUrl = dotenv.env['SUPABASE_URL'];
+  final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
 
-  const supabaseUrl = String.fromEnvironment("supabaseUrl");
-  const supabaseAnonKey = String.fromEnvironment("supabaseAnonKey");
-
-  await supa.Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
+  await supa.Supabase.initialize(url: supabaseUrl!, anonKey: supabaseAnonKey!);
   logger('Supabase init started: $supabaseUrl');
   await configureDependencies(kIsWeb ? 'dev' : 'prod');
   runApp(const MyApp());

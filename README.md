@@ -51,14 +51,15 @@ Follow this guide to set up and run the Botambe:
     dart run build_runner build --delete-conflicting-outputs
     ```
 
-5. **Setup Supabase Keys:** Copy paste the file ```keys.example``` to the project directory.
-    - Rename the copied file as ```keys-prod.json```. 
-    - Replace the empty value of ```supabaseUrl``` and ```supabaseAnonKey``` with your supabase keys
+5. **Setup Supabase Keys:** 
+    - Copy paste the file ```.env.example``` to the project directory.
+    - Rename the copied file as ```.env```. 
+    - Replace the empty value of ```SUPABASE_URL``` and ```SUPABASE_ANON_KEY``` with your supabase keys
 
 6. **Run the App:** Execute the following command to run the app:
 
     ```bash
-    flutter run --dart-define-from-file keys-prod.json
+    flutter run
     ```
 
 ### Building the Botambe:
@@ -66,13 +67,13 @@ Follow this guide to set up and run the Botambe:
 - **Android build:**
 
     ```bash
-    flutter build apk --dart-define-from-file keys-prod.json --no-tree-shake-icons
+    flutter build apk --no-tree-shake-icons
     ```
 
 - **iOS Build:**
 
     ```bash
-    flutter build ios -t lib/main.dart --dart-define-from-file keys-prod.json --no-tree-shake-icons --build-name
+    flutter build ios -t lib/main.dart --no-tree-shake-icons --build-name
     ```
 
 Congratulations! You've successfully set up and run or built the Botambe. Explore the codebase, make modifications, and contribute to creating a seamless experience on the app. Happy coding!
@@ -115,7 +116,7 @@ Create a `vercel.json` file in your project root:
 
 3. **Build Your Flutter Web App**
 ```bash
-flutter build web --dart-define-from-file keys-prod.json --no-tree-shake-icons
+flutter build web --no-tree-shake-icons
 ```
 
 4. **Deploy to Vercel**
