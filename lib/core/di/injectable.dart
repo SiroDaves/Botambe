@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../common/utils/app_util.dart';
 import '../../common/utils/constants/app_constants.dart';
 import '../../common/data/db/app_database.dart';
 import '../../common/repository/db/database_repository_impl.dart';
@@ -17,8 +18,9 @@ final getIt = GetIt.instance;
   initializerName: r'initGetIt',
   generateForDir: ['lib'],
 )
-Future<void> configureDependencies() async {
-  await getIt.initGetIt();
+Future<void> configureDependencies(String environment) async {
+  logger('Using environment: $environment');
+  await getIt.initGetIt(environment: environment);
   await getIt.allReady();
 }
 
@@ -26,14 +28,17 @@ Future<void> configureDependencies() async {
 abstract class RegisterModule {
   @singleton
   @preResolve
-  Future<SharedPreferences> prefsRepository() => SharedPreferences.getInstance();
+  Future<SharedPreferences> prefsRepository() =>
+      SharedPreferences.getInstance();
 
+  @prod
   @singleton
   @preResolve
   Future<AppDatabase> provideAppDatabase() async => await $FloorAppDatabase
       .databaseBuilder(await AppConstants.databaseFile)
       .build();
 
+  @prod
   @lazySingleton
   DatabaseRepository provideDatabaseRepository(AppDatabase appDatabase) =>
       DatabaseRepositoryImpl(appDatabase);
@@ -41,5 +46,10 @@ abstract class RegisterModule {
 
 dynamic _parseAndDecode(String response) => jsonDecode(response);
 
-dynamic parseJson(String text) =>
-    compute<String, dynamic>(_parseAndDecode, text);
+dynamic parseJson(String text) {
+  if (kIsWeb) {
+    return jsonDecode(text);
+  } else {
+    return compute<String, dynamic>(_parseAndDecode, text);
+  }
+}

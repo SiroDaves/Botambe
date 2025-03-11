@@ -72,7 +72,66 @@ Follow this guide to set up and run the Botambe:
 - **iOS Build:**
 
     ```bash
-    flutter build ios -t lib/main_prod.dart --dart-define-from-file keys-prod.json --no-tree-shake-icons --build-name
+    flutter build ios -t lib/main.dart --dart-define-from-file keys-prod.json --no-tree-shake-icons --build-name
     ```
 
 Congratulations! You've successfully set up and run or built the Botambe. Explore the codebase, make modifications, and contribute to creating a seamless experience on the app. Happy coding!
+
+### Deploying on Firebase
+   ```bash
+   # Install FlutterFire CLI
+   dart pub global activate flutterfire_cli
+
+   # Install Firebase CLI
+   npm install -g firebase-tools
+
+   # Login to Firebase
+   firebase login
+
+   # Configure Firebase for your Flutter app
+   flutterfire configure --project=your-project-id
+
+   # This will:
+   # - Create a new Firebase project (or select existing)
+   # - Add Android & iOS & Web apps
+   # - Download and add config files automatically
+   # - Generate firebase_options.dart
+   ```
+
+## CI/CD Pipeline
+
+CI/CD pipeline for this project has been implemented using GitHub Actions and consists of three main jobs:
+
+### 1. Test Job
+- Runs on Ubuntu latest
+- Sets up Flutter 3.27.1
+- Gets dependencies
+- Runs tests with coverage
+- Uploads coverage report as artifact
+
+### 2. Build Job
+- Triggers after successful tests
+- Builds web version
+- Builds Android APK
+- Deploys to Firebase hosting
+- Uploads APK as artifact
+
+### 3. Release Job
+- Creates GitHub release
+- Uploads APK to release
+- Automatically versions releases (v1.0.x)
+
+### Pipeline Triggers
+- Activates on push to main branch
+- Requires following secrets:
+  - FIREBASE_TOKEN
+  - GTH_TKN (GitHub Token)
+
+## CI/CD Status
+[![Flutter CI/CD Pipeline](https://github.com/SiroDaves/Botambe/actions/workflows/main.yml/badge.svg)](https://github.com/SiroDaves/Botambe/actions/workflows/main.yml)
+
+## Getting Started with Flutter
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

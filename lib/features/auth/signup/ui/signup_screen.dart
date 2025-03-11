@@ -12,6 +12,7 @@ import '../../../../common/widget/action/base_buttons.dart';
 import '../../../../common/widget/inputs/form_input.dart';
 import '../../../../common/widget/progress/custom_snackbar.dart';
 import '../../../../common/widget/progress/general_progress.dart';
+import '../../../../common/widget/responsive_layout.dart';
 import '../../../../core/di/injectable.dart';
 import '../../../../core/theme/theme_colors.dart';
 import '../../common/bloc/user_auth_bloc.dart';
@@ -79,7 +80,10 @@ class SignupScreenState extends State<SignupScreen> {
               loading: () => LoadingProgress(
                 title: isPassResetting ? l10n.passResetting : l10n.signingUp,
               ),
-              orElse: () => SignupForm(parent: this),
+              orElse: () => ResponsiveLayout(
+                showMobileView: true,
+                child: SignupForm(parent: this),
+              ),
             ),
           );
         },

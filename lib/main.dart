@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supa;
@@ -22,8 +23,7 @@ Future<void> main() async {
 
   await supa.Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
   logger('Supabase init started: $supabaseUrl');
-
-  await configureDependencies();
+  await configureDependencies(kIsWeb ? 'dev' : 'prod');
   runApp(const MyApp());
 }
 

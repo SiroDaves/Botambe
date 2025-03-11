@@ -11,6 +11,43 @@ class AppDurations {
   static const Duration slow = Duration(seconds: 5);
 }
 
+class PageBreaks {
+  static double get minWidth => 300;
+
+  static double get mobileWidth => 450;
+  
+  static double get maxWidth => 800;
+
+  static double get largePhone => 550;
+
+  static double get tabletPortrait => 768;
+
+  static double get tabletLandscape => 1024;
+
+  static double get standardBreakPt => tabletPortrait;
+
+  static double get bigScreen => 1200;
+
+  static double get desktop => 1440;
+
+  static int gridColumns(double width) {
+    if (width > desktop){
+      return 4;
+    } else if (width > bigScreen){
+      return 3;
+    } else {
+      return 2;
+    }
+  }
+  static int gridColumnsBig(double width) {
+    if (width > bigScreen){
+      return 3;
+    } else {
+      return 2;
+    }
+  }
+}
+
 class Sizes {
   /// extra small size = 5
   static const double xs = 5;
